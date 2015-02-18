@@ -11,7 +11,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraftforge.common.util.ForgeDirection;
 import crazypants.enderio.ModObject;
 import crazypants.enderio.TileEntityEio;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 
 public class TileEnchanter extends TileEntityEio implements ISidedInventory {
 
@@ -247,7 +247,7 @@ public class TileEnchanter extends TileEntityEio implements ISidedInventory {
       level = recipe.getEnchantment().getMaxLevel();
     }
     int costPerLevel = recipe.getCostPerLevel();
-    int res = Config.enchanterBaseLevelCost;
+    int res = Configs.enchanterBaseLevelCost;
     for (int i = 0; i < level; i++) {
       res += costPerLevel * level;
     }

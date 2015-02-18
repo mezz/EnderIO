@@ -13,7 +13,7 @@ import crazypants.enderio.conduit.facade.ItemConduitFacade.FacadeType;
 import crazypants.enderio.conduit.item.filter.ClearFilterRecipe;
 import crazypants.enderio.conduit.item.filter.CopyFilterRecipe;
 import crazypants.enderio.conduit.me.MEUtil;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.MachineRecipeRegistry;
 import crazypants.enderio.material.Alloy;
 import crazypants.enderio.material.BlockFusedQuartz;
@@ -45,7 +45,7 @@ public class ConduitRecipes {
     GameRegistry.addShapedRecipe(new ItemStack(EnderIO.itemConduitFacade, 1, FacadeType.BASIC.ordinal()), "bbb", "b b", "bbb", 'b', conduitBinder);
     GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(EnderIO.itemConduitFacade, 1, FacadeType.HARDENED.ordinal()), " o ", "oFo", " o ", 'F', EnderIO.itemConduitFacade, 'o', "dustObsidian"));
 
-    int numConduits = Config.numConduitsPerRecipe;
+    int numConduits = Configs.numConduitsPerRecipe;
     GameRegistry.addShapedRecipe(new ItemStack(EnderIO.itemLiquidConduit, numConduits, 0), "bbb", "###", "bbb", 'b', conduitBinder, '#', fusedGlass);
     GameRegistry.addShapedRecipe(new ItemStack(EnderIO.itemLiquidConduit, numConduits, 1), "bbb", "###", "bbb", 'b', conduitBinder, '#', fusedQuartz);
     GameRegistry.addShapedRecipe(new ItemStack(EnderIO.itemLiquidConduit, numConduits, 2), "bbb", "#p#", "bbb", 'b', conduitBinder, '#', fusedQuartz, 'p', phasedGold);
@@ -107,7 +107,7 @@ public class ConduitRecipes {
     
     ItemStack quartzFiber = AEApi.instance().parts().partQuartzFiber.stack(1).copy();
     ItemStack conduitBinder = new ItemStack(EnderIO.itemMaterial, 1, Material.CONDUIT_BINDER.ordinal());
-    ItemStack res = new ItemStack(EnderIO.itemMEConduit, Config.numConduitsPerRecipe / 2);
+    ItemStack res = new ItemStack(EnderIO.itemMEConduit, Configs.numConduitsPerRecipe / 2);
 
     GameRegistry.addRecipe(new ShapedOreRecipe(res.copy(), "bbb", "fqf", "bbb", 'b', conduitBinder, 'f', fluix, 'q', quartzFiber));
     GameRegistry.addRecipe(new ShapedOreRecipe(res.copy(), "bbb", "fqf", "bbb", 'b', conduitBinder, 'f', pureFluix, 'q', quartzFiber));

@@ -22,7 +22,7 @@ import crazypants.enderio.TileEntityEio;
 import crazypants.enderio.conduit.ConnectionMode;
 import crazypants.enderio.conduit.IConduitBundle;
 import crazypants.enderio.conduit.power.IPowerConduit;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.IIoConfigurable;
 import crazypants.enderio.machine.IoMode;
 import crazypants.enderio.machine.RedstoneControlMode;
@@ -39,9 +39,9 @@ import crazypants.vecmath.VecmathUtil;
 
 public class TileCapacitorBank extends TileEntityEio implements IInternalPowerHandler, IInventory, IIoConfigurable, IPowerStorage {
 
-  static final BasicCapacitor BASE_CAP = new BasicCapacitor(Config.capacitorBankMaxIoRF, Config.capacitorBankMaxStorageRF);
+  static final BasicCapacitor BASE_CAP = new BasicCapacitor(Configs.capacitorBankMaxIoRF, Configs.capacitorBankMaxStorageRF);
 
-  private static final int MAX_SIZE = Integer.MAX_VALUE / Config.capacitorBankMaxStorageRF;
+  private static final int MAX_SIZE = Integer.MAX_VALUE / Configs.capacitorBankMaxStorageRF;
 
   BlockCoord[] multiblock = null;
 

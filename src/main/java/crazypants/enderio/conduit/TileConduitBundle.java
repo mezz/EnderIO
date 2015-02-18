@@ -39,7 +39,7 @@ import crazypants.enderio.conduit.liquid.ILiquidConduit;
 import crazypants.enderio.conduit.me.IMEConduit;
 import crazypants.enderio.conduit.power.IPowerConduit;
 import crazypants.enderio.conduit.redstone.InsulatedRedstoneConduit;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.render.BoundingBox;
 import crazypants.util.BlockCoord;
 
@@ -264,7 +264,7 @@ public class TileConduitBundle extends TileEntityEio implements IConduitBundle {
       FacadeRenderState curRS = getFacadeRenderedAs();
       FacadeRenderState rs = ConduitUtil.getRequiredFacadeRenderState(this, EnderIO.proxy.getClientPlayer());
 
-      if(Config.updateLightingWhenHidingFacades) {
+      if(Configs.updateLightingWhenHidingFacades) {
         int curLO = getLightOpacity();
         int shouldBeLO = rs == FacadeRenderState.FULL ? 255 : 0;
         if(curLO != shouldBeLO) {

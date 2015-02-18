@@ -19,7 +19,7 @@ import crazypants.enderio.conduit.AbstractConduitNetwork;
 import crazypants.enderio.conduit.ConnectionMode;
 import crazypants.enderio.conduit.IConduit;
 import crazypants.enderio.conduit.geom.CollidableComponent;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.render.IconUtil;
 import crazypants.util.BlockCoord;
 
@@ -62,9 +62,9 @@ public class AdvancedLiquidConduit extends AbstractTankConduit {
 
   private long ticksSinceFailedExtract = 0;
 
-  public static final int MAX_EXTRACT_PER_TICK = Config.advancedFluidConduitExtractRate;
+  public static final int MAX_EXTRACT_PER_TICK = Configs.advancedFluidConduitExtractRate;
 
-  public static final int MAX_IO_PER_TICK = Config.advancedFluidConduitMaxIoRate;
+  public static final int MAX_IO_PER_TICK = Configs.advancedFluidConduitMaxIoRate;
 
   public AdvancedLiquidConduit() {
     updateTank();

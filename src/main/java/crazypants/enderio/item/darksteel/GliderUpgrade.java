@@ -3,7 +3,7 @@ package crazypants.enderio.item.darksteel;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import crazypants.enderio.EnderIO;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 
 public class GliderUpgrade extends AbstractUpgrade {
 
@@ -30,7 +30,7 @@ public class GliderUpgrade extends AbstractUpgrade {
   }
 
   public GliderUpgrade() {
-    super(UPGRADE_NAME, "enderio.darksteel.upgrade.glider", new ItemStack(DarkSteelItems.itemGliderWing,1,1), Config.darkSteelGliderCost);
+    super(UPGRADE_NAME, "enderio.darksteel.upgrade.glider", new ItemStack(DarkSteelItems.itemGliderWing,1,1), Configs.darkSteelGliderCost);
   }  
   
   @Override

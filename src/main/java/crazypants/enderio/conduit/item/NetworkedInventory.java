@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import crazypants.enderio.conduit.ConnectionMode;
 import crazypants.enderio.conduit.item.filter.IItemFilter;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.util.BlockCoord;
 import crazypants.util.InventoryWrapper;
 import crazypants.util.ItemUtil;
@@ -277,7 +277,7 @@ public class NetworkedInventory {
           && other.canInsert()
           && con.getInputColor(conDir) == other.con.getOutputColor(other.conDir)) {
 
-        if(Config.itemConduitUsePhyscialDistance) {
+        if(Configs.itemConduitUsePhyscialDistance) {
           sendPriority.add(new Target(other, distanceTo(other), other.isSticky(), other.getPriority()));
         } else {
           result.add(new Target(other, 9999999, other.isSticky(), other.getPriority()));
@@ -285,7 +285,7 @@ public class NetworkedInventory {
       }
     }
 
-    if(Config.itemConduitUsePhyscialDistance) {
+    if(Configs.itemConduitUsePhyscialDistance) {
       Collections.sort(sendPriority);
     } else {
       if(!result.isEmpty()) {

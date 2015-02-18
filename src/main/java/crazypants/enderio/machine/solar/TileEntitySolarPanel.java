@@ -15,7 +15,7 @@ import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import crazypants.enderio.TileEntityEio;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.power.IInternalPowerProvider;
 import crazypants.enderio.power.IPowerInterface;
 import crazypants.enderio.power.PowerHandlerUtil;
@@ -156,9 +156,9 @@ public class TileEntitySolarPanel extends TileEntityEio implements IInternalPowe
   private int getEnergyPerTick() {
     int meta = getBlockMetadata();
     if(meta == 0) {
-      return Config.maxPhotovoltaicOutputRF;
+      return Configs.maxPhotovoltaicOutputRF;
     }
-    return Config.maxPhotovoltaicAdvancedOutputRF;
+    return Configs.maxPhotovoltaicAdvancedOutputRF;
   }
 
   float calculateLightRatio() {

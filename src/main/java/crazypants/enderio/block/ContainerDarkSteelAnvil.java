@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.ReflectionHelper;
 import crazypants.enderio.EnderIO;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 
 public class ContainerDarkSteelAnvil extends ContainerRepair {
 
@@ -74,7 +74,7 @@ public class ContainerDarkSteelAnvil extends ContainerRepair {
         ContainerDarkSteelAnvil.this.maximumCost = 0;
 
         if(!player.capabilities.isCreativeMode && !world.isRemote && world.getBlock(x, y, z) == EnderIO.blockDarkSteelAnvil
-            && player.getRNG().nextFloat() < Config.darkSteelAnvilDamageChance) {
+            && player.getRNG().nextFloat() < Configs.darkSteelAnvilDamageChance) {
           int i1 = world.getBlockMetadata(x, y, z);
           int k = i1 & 3;
           int l = i1 >> 2;

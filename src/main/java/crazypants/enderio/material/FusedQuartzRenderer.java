@@ -11,7 +11,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.common.util.ForgeDirection;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import crazypants.enderio.EnderIO;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.painter.PainterUtil;
 import crazypants.enderio.machine.painter.TileEntityPaintedBlock;
 import crazypants.enderio.conduit.render.ConduitBundleRenderer.FacadeAccessWrapper;
@@ -37,7 +37,7 @@ public class FusedQuartzRenderer implements ISimpleBlockRenderingHandler {
   };
 
   public FusedQuartzRenderer() {
-    connectedTextureRenderer.setMatchMeta(!Config.clearGlassConnectToFusedQuartz);
+    connectedTextureRenderer.setMatchMeta(!Configs.clearGlassConnectToFusedQuartz);
   }
   
   @Override

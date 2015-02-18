@@ -10,7 +10,7 @@ import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 import crazypants.enderio.ModObject;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.AbstractPoweredTaskEntity;
 import crazypants.enderio.machine.IMachineRecipe.ResultStack;
 import crazypants.enderio.machine.IPoweredTask;
@@ -305,7 +305,7 @@ public class TileVat extends AbstractPoweredTaskEntity implements IFluidHandler 
 
   @Override
   public int getPowerUsePerTick() {
-    return Config.vatPowerUserPerTickRF;
+    return Configs.vatPowerUserPerTickRF;
   }
 
   @Override

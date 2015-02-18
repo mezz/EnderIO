@@ -12,7 +12,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import crazypants.enderio.BlockEio;
 import crazypants.enderio.ModObject;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.gui.IResourceTooltipProvider;
 import crazypants.enderio.waila.IWailaInfoProvider;
 
@@ -30,7 +30,7 @@ public class BlockReinforcedObsidian extends BlockEio implements IResourceToolti
     setResistance(2000.0F);
     setStepSound(soundTypePiston);
     
-    if(!Config.reinforcedObsidianEnabled) {
+    if(!Configs.reinforcedObsidianEnabled) {
       setCreativeTab(null);
     }
   }

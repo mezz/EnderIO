@@ -5,7 +5,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.AbstractPowerConsumerEntity;
 import crazypants.enderio.machine.IoMode;
 import crazypants.enderio.machine.SlotDefinition;
@@ -24,7 +24,7 @@ public class TileBuffer extends AbstractPowerConsumerEntity implements IPaintabl
 
   private PowerDistributor dist;
 
-  private int maxOut = Config.powerConduitTierThreeRF;
+  private int maxOut = Configs.powerConduitTierThreeRF;
   private int maxIn = maxOut;
 
   public TileBuffer() {

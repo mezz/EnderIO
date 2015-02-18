@@ -22,7 +22,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import crazypants.enderio.EnderIO;
 import crazypants.enderio.TileEntityEio;
 import crazypants.enderio.api.redstone.IRedstoneConnectable;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.util.BlockCoord;
 import crazypants.util.InventoryWrapper;
 import crazypants.util.ItemUtil;
@@ -209,7 +209,7 @@ public abstract class AbstractMachineEntity extends TileEntityEio implements ISi
   }
 
   public float getVolume() {
-    return Config.machineSoundVolume;
+    return Configs.machineSoundVolume;
   }
 
   public float getPitch() {
@@ -218,7 +218,7 @@ public abstract class AbstractMachineEntity extends TileEntityEio implements ISi
 
   @SideOnly(Side.CLIENT)
   private void updateSound() {
-    if(Config.machineSoundsEnabled && hasSound()) {
+    if(Configs.machineSoundsEnabled && hasSound()) {
       if(isActive() && !isInvalid()) {
         if(sound == null) {
           sound = new MachineSound(soundRes, xCoord + 0.5f, yCoord + 0.5f, zCoord + 0.5f, getVolume(), getPitch());

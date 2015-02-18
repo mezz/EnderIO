@@ -6,7 +6,7 @@ import java.util.List;
 
 import net.minecraft.item.ItemStack;
 import crazypants.enderio.Log;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.MachineRecipeInput;
 import crazypants.util.Util;
 
@@ -67,10 +67,10 @@ public class ManyToOneRecipeManager {
 
   private void processConfig(RecipeConfig config) {
     if(config.isDumpItemRegistery()) {
-      Util.dumpModObjects(new File(Config.configDirectory, "modObjectsRegistery.txt"));
+      Util.dumpModObjects(new File(Configs.configDirectory, "modObjectsRegistery.txt"));
     }
     if(config.isDumpOreDictionary()) {
-      Util.dumpOreNames(new File(Config.configDirectory, "oreDictionaryRegistery.txt"));
+      Util.dumpOreNames(new File(Configs.configDirectory, "oreDictionaryRegistery.txt"));
     }
     List<Recipe> newRecipes = config.getRecipes(false);
     Log.info("Found " + newRecipes.size() + " valid " + managerName + " recipes in config.");

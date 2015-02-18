@@ -10,7 +10,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import crazypants.enderio.EnderIO;
 import crazypants.enderio.ModObject;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.AbstractPoweredTaskEntity;
 import crazypants.enderio.machine.IMachineRecipe;
 import crazypants.enderio.machine.IPoweredTask;
@@ -22,22 +22,22 @@ import crazypants.enderio.power.ICapacitor;
 
 public class TilePoweredSpawner extends AbstractPoweredTaskEntity {
 
-  public static final int MIN_SPAWN_DELAY_BASE = Config.poweredSpawnerMinDelayTicks;
-  public static final int MAX_SPAWN_DELAY_BASE = Config.poweredSpawnerMaxDelayTicks;
+  public static final int MIN_SPAWN_DELAY_BASE = Configs.poweredSpawnerMinDelayTicks;
+  public static final int MAX_SPAWN_DELAY_BASE = Configs.poweredSpawnerMaxDelayTicks;
 
-  public static final int POWER_PER_TICK_ONE = Config.poweredSpawnerLevelOnePowerPerTickRF;
+  public static final int POWER_PER_TICK_ONE = Configs.poweredSpawnerLevelOnePowerPerTickRF;
   private static final BasicCapacitor CAP_ONE = new BasicCapacitor((int) (POWER_PER_TICK_ONE * 1.25), Capacitors.BASIC_CAPACITOR.capacitor.getMaxEnergyStored());
 
-  public static final int POWER_PER_TICK_TWO = Config.poweredSpawnerLevelTwoPowerPerTickRF;
+  public static final int POWER_PER_TICK_TWO = Configs.poweredSpawnerLevelTwoPowerPerTickRF;
   private static final BasicCapacitor CAP_TWO = new BasicCapacitor((int) (POWER_PER_TICK_TWO * 1.25),
       Capacitors.ACTIVATED_CAPACITOR.capacitor.getMaxEnergyStored());
 
-  public static final int POWER_PER_TICK_THREE = Config.poweredSpawnerLevelThreePowerPerTickRF;
+  public static final int POWER_PER_TICK_THREE = Configs.poweredSpawnerLevelThreePowerPerTickRF;
   private static final BasicCapacitor CAP_THREE = new BasicCapacitor((int) (POWER_PER_TICK_THREE * 1.25),
       Capacitors.ENDER_CAPACITOR.capacitor.getMaxEnergyStored());
 
-  public static final int MIN_PLAYER_DISTANCE = Config.poweredSpawnerMaxPlayerDistance;
-  public static final boolean USE_VANILLA_SPAWN_CHECKS = Config.poweredSpawnerUseVanillaSpawChecks;
+  public static final int MIN_PLAYER_DISTANCE = Configs.poweredSpawnerMaxPlayerDistance;
+  public static final boolean USE_VANILLA_SPAWN_CHECKS = Configs.poweredSpawnerUseVanillaSpawChecks;
 
   private final SpawnerLogic logic = new SpawnerLogic();
 

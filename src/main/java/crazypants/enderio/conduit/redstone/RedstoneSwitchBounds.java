@@ -1,6 +1,6 @@
 package crazypants.enderio.conduit.redstone;
 
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.render.BoundingBox;
 import crazypants.render.VertexRotation;
 import crazypants.render.VertexTransform;
@@ -25,7 +25,7 @@ public class RedstoneSwitchBounds {
 
   RedstoneSwitchBounds() {
 
-    float conduitScale = (float) Config.conduitScale;
+    float conduitScale = (float) Configs.conduitScale;
 
     float size = Math.max(0.2f, conduitScale * 0.5f);
     float halfWidth = size / 3;

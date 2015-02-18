@@ -8,7 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.farm.TileFarmStation;
 import crazypants.util.BlockCoord;
 
@@ -18,7 +18,7 @@ public class CocoaFarmer extends CustomSeedFarmer
     {
         super(Blocks.cocoa, new ItemStack(Items.dye,1,3));
         this.requiresFarmland = false;
-        if (!Config.farmHarvestJungleWhenCocoa) {
+        if (!Configs.farmHarvestJungleWhenCocoa) {
           this.disableTreeFarm = true;
         }
     }

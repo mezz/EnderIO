@@ -4,7 +4,7 @@ import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.item.ItemStack;
 import crazypants.enderio.EnderIO;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.material.FrankenSkull;
 import crazypants.enderio.material.Material;
 
@@ -13,7 +13,7 @@ public class SoulBinderEnderCystalRecipe extends AbstractSoulBinderRecipe {
   public static SoulBinderEnderCystalRecipe instance = new SoulBinderEnderCystalRecipe();
 
   private SoulBinderEnderCystalRecipe() {
-    super(Config.soulBinderEnderCystalRF,Config.soulBinderEnderCystalLevels, "SoulBinderEnderCystalRecipe", "SpecialMobs.SpecialEnderman", "Enderman");
+    super(Configs.soulBinderEnderCystalRF,Configs.soulBinderEnderCystalLevels, "SoulBinderEnderCystalRecipe", "SpecialMobs.SpecialEnderman", "Enderman");
   }
 
   @Override

@@ -12,7 +12,7 @@ import net.minecraft.util.AxisAlignedBB;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
 import cpw.mods.fml.relauncher.Side;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 
 public class MagnetController implements IEntitySelector {
 
@@ -43,8 +43,8 @@ public class MagnetController implements IEntitySelector {
   private void doHoover(EntityPlayer player) {
     
     AxisAlignedBB aabb = AxisAlignedBB.getBoundingBox(
-        player.posX - Config.magnetRange, player.posY - Config.magnetRange, player.posZ - Config.magnetRange,
-        player.posX + Config.magnetRange, player.posY + Config.magnetRange, player.posZ + Config.magnetRange);
+        player.posX - Configs.magnetRange, player.posY - Configs.magnetRange, player.posZ - Configs.magnetRange,
+        player.posX + Configs.magnetRange, player.posY + Configs.magnetRange, player.posZ + Configs.magnetRange);
         
     List<Entity> interestingItems = player.worldObj.selectEntitiesWithinAABB(EntityItem.class, aabb, this);        
     List<Entity> xp = player.worldObj.selectEntitiesWithinAABB(EntityXPOrb.class, aabb, this);

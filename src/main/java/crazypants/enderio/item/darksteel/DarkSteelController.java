@@ -22,7 +22,7 @@ import cpw.mods.fml.common.gameevent.TickEvent.Phase;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import crazypants.enderio.EnderIO;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.solar.TileEntitySolarPanel;
 import crazypants.enderio.network.PacketHandler;
 import crazypants.util.Util;
@@ -156,7 +156,7 @@ public class DarkSteelController {
 
       for (int i = 0; i < 4 && toAdd > 0; i++) {
         ItemStack stack = player.inventory.armorInventory[nextIndex];
-        if(stack != null && (EnergyUpgrade.loadFromItem(stack) != null || (Config.darkSteelSolarChargeOthers && stack.getItem() instanceof IEnergyContainerItem))) {
+        if(stack != null && (EnergyUpgrade.loadFromItem(stack) != null || (Configs.darkSteelSolarChargeOthers && stack.getItem() instanceof IEnergyContainerItem))) {
           toAdd -= ((IEnergyContainerItem) stack.getItem()).receiveEnergy(stack, toAdd, false);
         }
         nextIndex = (nextIndex + 1) % 4;
@@ -185,10 +185,10 @@ public class DarkSteelController {
 
     if(!player.onGround && player.motionY < 0 && !player.isSneaking() && !player.isInWater()) {
 
-      double horizontalSpeed = Config.darkSteelGliderHorizontalSpeed;
-      double verticalSpeed = Config.darkSteelGliderVerticalSpeed;
+      double horizontalSpeed = Configs.darkSteelGliderHorizontalSpeed;
+      double verticalSpeed = Configs.darkSteelGliderVerticalSpeed;
       if(player.isSprinting()) {
-        verticalSpeed = Config.darkSteelGliderVerticalSpeedSprinting;
+        verticalSpeed = Configs.darkSteelGliderVerticalSpeedSprinting;
       }
 
       Vector3d look = Util.getLookVecEio(player);
@@ -239,7 +239,7 @@ public class DarkSteelController {
       attackInst.removeModifier(swordDamageModifierPowered);
 
       ItemStack sword = player.getCurrentEquippedItem();
-      if(Config.darkSteelSwordPowerUsePerHit <= 0 || EnergyUpgrade.getEnergyStored(sword) >= Config.darkSteelSwordPowerUsePerHit) {
+      if(Configs.darkSteelSwordPowerUsePerHit <= 0 || EnergyUpgrade.getEnergyStored(sword) >= Configs.darkSteelSwordPowerUsePerHit) {
         attackInst.applyModifier(swordDamageModifierPowered);
       }
     }
@@ -262,7 +262,7 @@ public class DarkSteelController {
     if(leggings != null && leggings.getItem() == DarkSteelItems.itemDarkSteelLeggings && speedUpgrade != null && isSpeedActive(player)) {
 
       double horzMovement = Math.abs(player.distanceWalkedModified - player.prevDistanceWalkedModified);
-      double costModifier = player.isSprinting() ? Config.darkSteelSprintPowerCost : Config.darkSteelWalkPowerCost;
+      double costModifier = player.isSprinting() ? Configs.darkSteelSprintPowerCost : Configs.darkSteelWalkPowerCost;
       costModifier = costModifier + (costModifier * speedUpgrade.walkMultiplier);
       int cost = (int) (horzMovement * costModifier);
       int totalEnergy = getPlayerEnergy(player, DarkSteelItems.itemDarkSteelLeggings);
@@ -284,7 +284,7 @@ public class DarkSteelController {
     if(boots != null && boots.getItem() == DarkSteelItems.itemDarkSteelBoots) {
       int costedDistance = (int) player.fallDistance;
       if(costedDistance > 0) {
-        int energyCost = costedDistance * Config.darkSteelFallDistanceCost;
+        int energyCost = costedDistance * Configs.darkSteelFallDistanceCost;
         int totalEnergy = getPlayerEnergy(player, DarkSteelItems.itemDarkSteelBoots);
         if(totalEnergy > 0 && totalEnergy >= energyCost) {
           usePlayerEnergy(player, DarkSteelItems.itemDarkSteelBoots, energyCost);
@@ -307,7 +307,7 @@ public class DarkSteelController {
     }
     boolean extracted = false;
     int remaining = cost;
-    if(Config.darkSteelDrainPowerFromInventory) {
+    if(Configs.darkSteelDrainPowerFromInventory) {
       for (ItemStack stack : player.inventory.mainInventory) {
         if(stack != null && stack.getItem() instanceof IEnergyContainerItem) {
           IEnergyContainerItem cont = (IEnergyContainerItem) stack.getItem();
@@ -332,7 +332,7 @@ public class DarkSteelController {
   private int getPlayerEnergy(EntityPlayer player, ItemDarkSteelArmor armor) {
     int res = 0;
 
-    if(Config.darkSteelDrainPowerFromInventory) {
+    if(Configs.darkSteelDrainPowerFromInventory) {
       for (ItemStack stack : player.inventory.mainInventory) {
         if(stack != null && stack.getItem() instanceof IEnergyContainerItem) {
           IEnergyContainerItem cont = (IEnergyContainerItem) stack.getItem();
@@ -384,11 +384,11 @@ public class DarkSteelController {
       return;
     }
 
-    int requiredPower = Config.darkSteelBootsJumpPowerCost * (int) Math.pow(jumpCount + 1, 2.5);
+    int requiredPower = Configs.darkSteelBootsJumpPowerCost * (int) Math.pow(jumpCount + 1, 2.5);
     int availablePower = getPlayerEnergy(player, DarkSteelItems.itemDarkSteelBoots);
     if(availablePower > 0 && requiredPower <= availablePower && jumpCount < jumpUpgrade.level) {
       jumpCount++;
-      player.motionY += 0.15 * Config.darkSteelBootsJumpModifier * jumpCount;
+      player.motionY += 0.15 * Configs.darkSteelBootsJumpModifier * jumpCount;
       ticksSinceLastJump = 0;
       usePlayerEnergy(player, DarkSteelItems.itemDarkSteelBoots, requiredPower);
       player.worldObj.playSound(player.posX, player.posY, player.posZ, EnderIO.MODID + ":ds.jump", 1.0f, player.worldObj.rand.nextFloat() * 0.5f + 0.75f, false);

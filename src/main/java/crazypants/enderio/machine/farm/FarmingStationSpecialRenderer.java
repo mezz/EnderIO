@@ -5,7 +5,7 @@ import static org.lwjgl.opengl.GL11.glDisable;
 import static org.lwjgl.opengl.GL11.glEnable;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.render.RenderUtil;
 import crazypants.vecmath.Vector3f;
 
@@ -14,7 +14,7 @@ public class FarmingStationSpecialRenderer extends TileEntitySpecialRenderer{
   private void renderFarmStationAt(TileFarmStation tile, double x, double y, double z, float partialTickTime) {
 
     String toRender = tile.notification;
-    if ("".equals(toRender) || Config.disableFarmNotification) {
+    if ("".equals(toRender) || Configs.disableFarmNotification) {
       return;
     }
     

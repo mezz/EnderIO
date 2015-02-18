@@ -1,7 +1,7 @@
 package crazypants.enderio.item.darksteel;
 
 import cpw.mods.fml.common.registry.GameRegistry;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import static crazypants.enderio.item.darksteel.AbstractUpgrade.KEY_UPGRADE_PREFIX;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -45,7 +45,7 @@ public class NaturalistEyeUpgrade extends AbstractUpgrade {
   }
 
   public NaturalistEyeUpgrade() {
-    super(UPGRADE_NAME, "enderio.darksteel.upgrade.naturalistEye",getNaturalistEye(), Config.darkSteelApiaristArmorCost);
+    super(UPGRADE_NAME, "enderio.darksteel.upgrade.naturalistEye",getNaturalistEye(), Configs.darkSteelApiaristArmorCost);
   }
 
   @Override

@@ -29,7 +29,7 @@ import crazypants.enderio.conduit.RaytraceResult;
 import crazypants.enderio.conduit.geom.CollidableCache.CacheKey;
 import crazypants.enderio.conduit.geom.CollidableComponent;
 import crazypants.enderio.conduit.geom.ConduitGeometryUtil;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.item.PacketConduitProbe;
 import crazypants.enderio.machine.RedstoneControlMode;
 import crazypants.enderio.power.BasicCapacitor;
@@ -53,9 +53,9 @@ public class PowerConduit extends AbstractConduit implements IPowerConduit {
   static ICapacitor[] getCapacitors() {
     if(capacitors == null) {
       capacitors = new BasicCapacitor[] {
-        new BasicCapacitor(Config.powerConduitTierOneRF, Config.powerConduitTierOneRF),
-        new BasicCapacitor(Config.powerConduitTierTwoRF, Config.powerConduitTierTwoRF),
-        new BasicCapacitor(Config.powerConduitTierThreeRF, Config.powerConduitTierThreeRF)
+        new BasicCapacitor(Configs.powerConduitTierOneRF, Configs.powerConduitTierOneRF),
+        new BasicCapacitor(Configs.powerConduitTierTwoRF, Configs.powerConduitTierTwoRF),
+        new BasicCapacitor(Configs.powerConduitTierThreeRF, Configs.powerConduitTierThreeRF)
       };
     }
     return capacitors;
@@ -430,7 +430,7 @@ public class PowerConduit extends AbstractConduit implements IPowerConduit {
     if(!res) {
       return false;
     }
-    if(Config.powerConduitCanDifferentTiersConnect) {
+    if(Configs.powerConduitCanDifferentTiersConnect) {
       return res;
     }
     if( !(conduit instanceof IPowerConduit)) {

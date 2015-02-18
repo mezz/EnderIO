@@ -6,7 +6,7 @@ import java.util.List;
 import net.minecraft.item.ItemStack;
 import crazypants.enderio.EnderIO;
 import crazypants.enderio.ModObject;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.IMachineRecipe;
 import crazypants.enderio.machine.MachineRecipeInput;
 import crazypants.enderio.machine.spawner.PoweredSpawnerConfig;
@@ -24,7 +24,7 @@ public class SoulBinderSpawnerRecipe implements IMachineRecipe, ISoulBinderRecip
 
   @Override
   public int getEnergyRequired(MachineRecipeInput... inputs) {
-    return Config.soulBinderBrokenSpawnerRF;
+    return Configs.soulBinderBrokenSpawnerRF;
   }
 
   @Override
@@ -34,7 +34,7 @@ public class SoulBinderSpawnerRecipe implements IMachineRecipe, ISoulBinderRecip
 
   @Override
   public int getExperienceRequired() {   
-    return Config.soulBinderBrokenSpawnerLevels;
+    return Configs.soulBinderBrokenSpawnerLevels;
   }
 
   @Override
@@ -126,13 +126,13 @@ public class SoulBinderSpawnerRecipe implements IMachineRecipe, ISoulBinderRecip
 
   @Override
   public List<String> getSupportedSouls() {
-    List<String> res = EntityUtil.getAllRegisteredMobNames(!Config.soulVesselCapturesBosses);    
+    List<String> res = EntityUtil.getAllRegisteredMobNames(!Configs.soulVesselCapturesBosses);    
     return res;
   }
 
   @Override
   public int getEnergyRequired() {
-    return Config.soulBinderBrokenSpawnerRF;
+    return Configs.soulBinderBrokenSpawnerRF;
   }
   
   

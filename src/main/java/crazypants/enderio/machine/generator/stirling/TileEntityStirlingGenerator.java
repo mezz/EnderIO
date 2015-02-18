@@ -9,7 +9,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraftforge.common.util.ForgeDirection;
 import crazypants.enderio.ModObject;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.SlotDefinition;
 import crazypants.enderio.machine.generator.AbstractGeneratorEntity;
 import crazypants.enderio.network.PacketHandler;
@@ -19,7 +19,7 @@ import crazypants.util.BlockCoord;
 
 public class TileEntityStirlingGenerator extends AbstractGeneratorEntity implements ISidedInventory {
 
-  public static final int ENERGY_PER_TICK = Config.stirlingGeneratorBaseRfPerTick;
+  public static final int ENERGY_PER_TICK = Configs.stirlingGeneratorBaseRfPerTick;
 
   // public for alloy smelter
   public static final String SOUND_NAME = "generator.stirling";

@@ -9,7 +9,7 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 import cpw.mods.fml.common.registry.GameRegistry;
 import crazypants.enderio.EnderIO;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.item.skull.BlockEndermanSkull;
 import crazypants.enderio.machine.buffer.BlockItemBuffer.Type;
 import crazypants.enderio.machine.capbank.BlockItemCapBank;
@@ -81,7 +81,7 @@ public class MachineRecipes {
     //Powered Spawner
     ItemStack poweredSpawner = new ItemStack(EnderIO.blockPoweredSpawner);
     ItemStack zombieBit;
-    if(Config.useHardRecipes) {
+    if(Configs.useHardRecipes) {
       zombieBit = frankenZombie;
     } else {
       zombieBit = zombieController;
@@ -89,11 +89,11 @@ public class MachineRecipes {
     GameRegistry.addRecipe(new ShapedOreRecipe(poweredSpawner, "ese", "eme", "vzv", 'e', electricSteel, 's', "itemSkull", 'v', vibCry, 'm', machineChassi, 'z',
         zombieBit));
 
-    if(Config.reservoirEnabled) {
+    if(Configs.reservoirEnabled) {
       //reservoir    
       ItemStack reservoir = new ItemStack(EnderIO.blockReservoir, 2, 0);
       Object glassSides;
-      if(Config.useHardRecipes) {
+      if(Configs.useHardRecipes) {
         glassSides = "blockGlassHardened";
       } else {
         glassSides = "glass";
@@ -110,7 +110,7 @@ public class MachineRecipes {
 
     //mill
     ItemStack crusher = new ItemStack(EnderIO.blockCrusher, 1, 0);
-    if(Config.useHardRecipes) {
+    if(Configs.useHardRecipes) {
       GameRegistry.addShapedRecipe(crusher, "ooo", "fmf", "pip", 'f', Items.flint, 'm', machineChassi, 'i', Items.iron_ingot, 'p',
           Blocks.piston,
           'o', Blocks.obsidian);
@@ -120,7 +120,7 @@ public class MachineRecipes {
 
     //alloy smelter
     ItemStack alloySmelter = new ItemStack(EnderIO.blockAlloySmelter, 1, 0);
-    if(Config.useHardRecipes) {
+    if(Configs.useHardRecipes) {
       GameRegistry.addRecipe(new ShapedOreRecipe(alloySmelter, "bfb", "fmf", "bcb", 'c', Items.cauldron, 'm', machineChassi, 'b', Blocks.iron_block, 'f',
           Blocks.furnace));
     } else {
@@ -150,7 +150,7 @@ public class MachineRecipes {
 
     //painter
     ItemStack painter = new ItemStack(EnderIO.blockPainter, 1, 0);
-    if(Config.useHardRecipes) {
+    if(Configs.useHardRecipes) {
       GameRegistry.addRecipe(new ShapedOreRecipe(painter, "qqq", "mdm", "mMm", 'm', electricSteel, 'M', machineChassi, 'q', Items.quartz, 'd', Items.diamond,
           'd', Items.diamond));
     } else {
@@ -160,17 +160,17 @@ public class MachineRecipes {
 
     //Farm
     ItemStack farm = new ItemStack(EnderIO.blockFarmStation, 1, 0);
-    if(Config.useHardRecipes) {
+    if(Configs.useHardRecipes) {
       zombieBit = frankenZombie;
     } else {
       zombieBit = zombieController;
     }
     GameRegistry.addShapedRecipe(farm, "ehe", "eme", "pzp", 'h', Items.diamond_hoe, 'm', machineChassi, 'e', electricSteel, 'z', zombieController, 'p', pulCry);
 
-    if(Config.transceiverEnabled) {
+    if(Configs.transceiverEnabled) {
       //transceiver
       ItemStack transceiver = new ItemStack(EnderIO.blockTransceiver, 1, 0);
-      if(Config.transceiverUseEasyRecipe) {
+      if(Configs.transceiverUseEasyRecipe) {
         GameRegistry
             .addShapedRecipe(transceiver, "oeo", "pdp", "oco", 'o', obsidian, 'e', Items.ender_eye, 'c', enderCapacitor, 'p', phasedGold, 'd', Items.diamond);
       } else {
@@ -181,11 +181,11 @@ public class MachineRecipes {
     }
 
     //solar panel
-    if(Config.photovoltaicCellEnabled) {
+    if(Configs.photovoltaicCellEnabled) {
 
       ItemStack solarPanel = new ItemStack(EnderIO.blockSolarPanel, 1, 0);
       ItemStack advSolarPanel = new ItemStack(EnderIO.blockSolarPanel, 1, 1);
-      if(Config.useHardRecipes) {
+      if(Configs.useHardRecipes) {
         GameRegistry.addRecipe(new ShapedOreRecipe(solarPanel, "efe", "pfp", "cdc", 'd', Blocks.daylight_detector, 'f', "blockGlassHardened", 'c', capacitor,
             'e',
             energeticAlloy, 'p', phasedGold));
@@ -219,7 +219,7 @@ public class MachineRecipes {
 
     //Soul Binder
     ItemStack enderBit;
-    if(Config.soulBinderRequiresEndermanSkull) {
+    if(Configs.soulBinderRequiresEndermanSkull) {
       enderBit = new ItemStack(EnderIO.blockEndermanSkull);
     } else {
       enderBit = pulCry;
@@ -275,7 +275,7 @@ public class MachineRecipes {
     //powered light
     ItemStack poweredLamp = new ItemStack(EnderIO.blockElectricLight, 1, 0);
     ItemStack glowstone = new ItemStack(Items.glowstone_dust);
-    if(Config.useHardRecipes) {
+    if(Configs.useHardRecipes) {
       GameRegistry.addRecipe(new ShapedOreRecipe(poweredLamp, "ggg", "sds", "scs", 'g', fusedQuartz, 'd', glowstone, 's', "itemSilicon", 'c', capacitor));
     } else {
       GameRegistry.addRecipe(new ShapedOreRecipe(poweredLamp, "ggg", "sds", "scs", 'g', "glass", 'd', glowstone, 's', "itemSilicon", 'c', capacitor));

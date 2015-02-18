@@ -18,7 +18,7 @@ import crazypants.enderio.TileEntityEio;
 import crazypants.enderio.conduit.item.FilterRegister;
 import crazypants.enderio.conduit.item.filter.IItemFilter;
 import crazypants.enderio.conduit.item.filter.ItemFilter;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.IRedstoneModeControlable;
 import crazypants.enderio.machine.RedstoneControlMode;
 import crazypants.render.BoundingBox;
@@ -33,7 +33,7 @@ public class TileVacuumChest extends TileEntityEio implements IEntitySelector, I
   public static final int FILTER_SLOTS = 5;
 
   private final ItemStack[] inv = new ItemStack[ITEM_SLOTS];
-  private int range = Config.vacuumChestRange;
+  private int range = Configs.vacuumChestRange;
   private ItemFilter filter;
   private ItemStack filterItem;
 
@@ -235,7 +235,7 @@ public class TileVacuumChest extends TileEntityEio implements IEntitySelector, I
   }
 
   private int limitRange(int range) {
-    return Math.max(1, Math.min(Config.vacuumChestRange, range));
+    return Math.max(1, Math.min(Configs.vacuumChestRange, range));
   }
 
   public void setRange(int range) {
@@ -322,7 +322,7 @@ public class TileVacuumChest extends TileEntityEio implements IEntitySelector, I
     if(nbtRoot.hasKey("range")) {
       range = limitRange(nbtRoot.getInteger("range"));
     } else {
-      range = Config.vacuumChestRange;
+      range = Configs.vacuumChestRange;
     }
     if(nbtRoot.hasKey("filter")) {
       NBTTagCompound filterTag = (NBTTagCompound) nbtRoot.getTag("filter");

@@ -10,7 +10,7 @@ import net.minecraft.world.storage.WorldInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import crazypants.enderio.ModObject;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.AbstractPowerConsumerEntity;
 import crazypants.enderio.machine.SlotDefinition;
 import crazypants.enderio.network.PacketHandler;
@@ -21,21 +21,21 @@ import crazypants.enderio.power.ICapacitor;
 public class TileWeatherObelisk extends AbstractPowerConsumerEntity {
 
   public enum WeatherTask {
-    CLEAR(Config.weatherObeliskClearPower, Color.YELLOW) {
+    CLEAR(Configs.weatherObeliskClearPower, Color.YELLOW) {
       @Override
       void complete(TileEntity te) {
         rain(te, false);
         thunder(te, false);
       }
     },
-    RAIN(Config.weatherObeliskRainPower, new Color(120, 120, 255)) {
+    RAIN(Configs.weatherObeliskRainPower, new Color(120, 120, 255)) {
       @Override
       void complete(TileEntity te) {
         rain(te, true);
         thunder(te, false);
       }
     },
-    STORM(Config.weatherObeliskThunderPower, Color.DARK_GRAY) {
+    STORM(Configs.weatherObeliskThunderPower, Color.DARK_GRAY) {
       @Override
       void complete(TileEntity te) {
         rain(te, true);
@@ -88,7 +88,7 @@ public class TileWeatherObelisk extends AbstractPowerConsumerEntity {
   private Color particleColor;
   private boolean canBeActive = true;
   
-  private static int biggestPowerReq = Math.max(Math.max(Config.weatherObeliskClearPower, Config.weatherObeliskThunderPower), Config.weatherObeliskRainPower);
+  private static int biggestPowerReq = Math.max(Math.max(Configs.weatherObeliskClearPower, Configs.weatherObeliskThunderPower), Configs.weatherObeliskRainPower);
   private static final BasicCapacitor cap = new BasicCapacitor(biggestPowerReq / 200, biggestPowerReq);
   
   public TileWeatherObelisk() {

@@ -27,7 +27,7 @@ import com.mojang.authlib.GameProfile;
 
 import crazypants.enderio.EnderIO;
 import crazypants.enderio.ModObject;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.AbstractMachineEntity;
 import crazypants.enderio.machine.SlotDefinition;
 import crazypants.enderio.machine.generator.zombie.NutrientTank;
@@ -71,7 +71,7 @@ public class TileKillerJoe extends AbstractMachineEntity implements IFluidHandle
 
   private float prevSwingProgress;
 
-  private final ExperienceContainer xpCon = new ExperienceContainer(XpUtil.getExperienceForLevel(Config.killerJoeMaxXpLevel));
+  private final ExperienceContainer xpCon = new ExperienceContainer(XpUtil.getExperienceForLevel(Configs.killerJoeMaxXpLevel));
   
   private boolean hadSword;
 
@@ -173,7 +173,7 @@ public class TileKillerJoe extends AbstractMachineEntity implements IFluidHandle
       for (EntityLivingBase ent : entsInBounds) {
         if(!ent.isDead && ent.deathTime <= 0 && !ent.isEntityInvulnerable()) {
           if (ent instanceof EntityPlayer && ((EntityPlayer)ent).capabilities.disableDamage) continue;  //Ignore players in creative, can't damage them;
-          if (Config.killerJoeMustSee && !canJoeSee(ent)) continue;
+          if (Configs.killerJoeMustSee && !canJoeSee(ent)) continue;
           FakePlayer fakee = getAttackera();
           fakee.setCurrentItemOrArmor(0, getStackInSlot(0));
           fakee.attackTargetEntityWithCurrentItem(ent);
@@ -216,7 +216,7 @@ public class TileKillerJoe extends AbstractMachineEntity implements IFluidHandle
 
   private void hooverXP() {
 
-    double maxDist = Config.killerJoeHooverXpLength;
+    double maxDist = Configs.killerJoeHooverXpLength;
 
     List<EntityXPOrb> xp = worldObj.selectEntitiesWithinAABB(EntityXPOrb.class, getHooverBounds(), this);
 
@@ -323,24 +323,24 @@ public class TileKillerJoe extends AbstractMachineEntity implements IFluidHandle
       BoundingBox bb = new BoundingBox(getLocation());
       Vector3d min = bb.getMin();
       Vector3d max = bb.getMax();
-      max.y += Config.killerJoeAttackHeight;
-      min.y -= Config.killerJoeAttackHeight;
+      max.y += Configs.killerJoeAttackHeight;
+      min.y -= Configs.killerJoeAttackHeight;
 
       ForgeDirection facingDir = ForgeDirection.getOrientation(facing);
       if(ForgeDirectionOffsets.isPositiveOffset(facingDir)) {
-        max.add(ForgeDirectionOffsets.offsetScaled(facingDir, Config.killerJoeAttackLength));
+        max.add(ForgeDirectionOffsets.offsetScaled(facingDir, Configs.killerJoeAttackLength));
         min.add(ForgeDirectionOffsets.forDir(facingDir));
       } else {
-        min.add(ForgeDirectionOffsets.offsetScaled(facingDir, Config.killerJoeAttackLength));
+        min.add(ForgeDirectionOffsets.offsetScaled(facingDir, Configs.killerJoeAttackLength));
         max.add(ForgeDirectionOffsets.forDir(facingDir));
 
       }
       if(facingDir.offsetX == 0) {
-        min.x -= Config.killerJoeAttackWidth;
-        max.x += Config.killerJoeAttackWidth;
+        min.x -= Configs.killerJoeAttackWidth;
+        max.x += Configs.killerJoeAttackWidth;
       } else {
-        min.z -= Config.killerJoeAttackWidth;
-        max.z += Config.killerJoeAttackWidth;
+        min.z -= Configs.killerJoeAttackWidth;
+        max.z += Configs.killerJoeAttackWidth;
       }
       killBounds = AxisAlignedBB.getBoundingBox(min.x, min.y, min.z, max.x, max.y, max.z);
     }
@@ -352,24 +352,24 @@ public class TileKillerJoe extends AbstractMachineEntity implements IFluidHandle
       BoundingBox bb = new BoundingBox(getLocation());
       Vector3d min = bb.getMin();
       Vector3d max = bb.getMax();
-      max.y += Config.killerJoeAttackHeight;
-      min.y -= Config.killerJoeAttackHeight;
+      max.y += Configs.killerJoeAttackHeight;
+      min.y -= Configs.killerJoeAttackHeight;
 
       ForgeDirection facingDir = ForgeDirection.getOrientation(facing);
       if(ForgeDirectionOffsets.isPositiveOffset(facingDir)) {
-        max.add(ForgeDirectionOffsets.offsetScaled(facingDir, Config.killerJoeHooverXpLength));
+        max.add(ForgeDirectionOffsets.offsetScaled(facingDir, Configs.killerJoeHooverXpLength));
         min.add(ForgeDirectionOffsets.forDir(facingDir));
       } else {
-        min.add(ForgeDirectionOffsets.offsetScaled(facingDir, Config.killerJoeHooverXpLength));
+        min.add(ForgeDirectionOffsets.offsetScaled(facingDir, Configs.killerJoeHooverXpLength));
         max.add(ForgeDirectionOffsets.forDir(facingDir));
 
       }
       if(facingDir.offsetX == 0) {
-        min.x -= Config.killerJoeHooverXpWidth * 2;
-        max.x += Config.killerJoeHooverXpWidth * 2;
+        min.x -= Configs.killerJoeHooverXpWidth * 2;
+        max.x += Configs.killerJoeHooverXpWidth * 2;
       } else {
-        min.z -= Config.killerJoeHooverXpWidth * 2;
-        max.z += Config.killerJoeHooverXpWidth * 2;
+        min.z -= Configs.killerJoeHooverXpWidth * 2;
+        max.z += Configs.killerJoeHooverXpWidth * 2;
       }
       hooverBounds = AxisAlignedBB.getBoundingBox(min.x, min.y, min.z, max.x, max.y, max.z);
     }
@@ -379,7 +379,7 @@ public class TileKillerJoe extends AbstractMachineEntity implements IFluidHandle
   //-------------------------------  Fluid Stuff
 
   private void useNutrient() {
-    fuelTank.drain(Config.killerJoeNutrientUsePerAttackMb, true);
+    fuelTank.drain(Configs.killerJoeNutrientUsePerAttackMb, true);
     tanksDirty = true;
   }
 

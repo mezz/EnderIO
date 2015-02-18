@@ -5,7 +5,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import cpw.mods.fml.common.registry.GameRegistry;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 
 public class GogglesOfRevealingUpgrade extends AbstractUpgrade {
 
@@ -44,7 +44,7 @@ public class GogglesOfRevealingUpgrade extends AbstractUpgrade {
   }
 
   public GogglesOfRevealingUpgrade() {
-    super(UPGRADE_NAME, "enderio.darksteel.upgrade.gogglesOfRevealing",getGoggles(), Config.darkSteelGogglesOfRevealingCost);
+    super(UPGRADE_NAME, "enderio.darksteel.upgrade.gogglesOfRevealing",getGoggles(), Configs.darkSteelGogglesOfRevealingCost);
   }
 
   @Override

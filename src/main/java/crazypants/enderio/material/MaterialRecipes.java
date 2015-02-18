@@ -18,7 +18,7 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 import cpw.mods.fml.common.registry.GameRegistry;
 import crazypants.enderio.EnderIO;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.weather.TileWeatherObelisk.WeatherTask;
 import crazypants.util.OreDictionaryHelper;
 
@@ -103,7 +103,7 @@ public class MaterialRecipes {
     //Conduit Binder
     ItemStack cbc = binderComposite.copy();
     cbc.stackSize = 8;
-    if(Config.useAlternateBinderRecipe) {
+    if(Configs.useAlternateBinderRecipe) {
       GameRegistry.addShapedRecipe(cbc, "gcg", "sgs", "gcg", 'g', Blocks.gravel, 's', Blocks.sand, 'c', Items.clay_ball);
     } else {
       GameRegistry.addShapedRecipe(cbc, "ggg", "scs", "ggg", 'g', Blocks.gravel, 's', Blocks.sand, 'c', Items.clay_ball);
@@ -154,7 +154,7 @@ public class MaterialRecipes {
 
     ArrayList<ItemStack> steelIngots = OreDictionary.getOres("ingotSteel");
 
-    if(Config.useSteelInChassi == true && steelIngots != null && !steelIngots.isEmpty()) {
+    if(Configs.useSteelInChassi == true && steelIngots != null && !steelIngots.isEmpty()) {
       GameRegistry.addRecipe(new ShapedOreRecipe(machineChassi, "fif", "ici", "fif", 'f', Blocks.iron_bars, 'i', "ingotSteel", 'c', capacitor));
     } else {
       GameRegistry.addShapedRecipe(machineChassi, "fif", "ici", "fif", 'f', Blocks.iron_bars, 'i', Items.iron_ingot, 'c', capacitor);
@@ -167,21 +167,21 @@ public class MaterialRecipes {
     //Ender Capacitor
     ItemStack enderCapacitor = new ItemStack(EnderIO.itemBasicCapacitor, 1, 2);
     ItemStack activatedCapacitor = new ItemStack(EnderIO.itemBasicCapacitor, 1, 1);
-    if(Config.useHardRecipes) {
+    if(Configs.useHardRecipes) {
       GameRegistry.addShapedRecipe(enderCapacitor, "eee", "cgc", "eee", 'e', phasedGold, 'c', activatedCapacitor, 'g', Blocks.glowstone);
     } else {
       GameRegistry.addShapedRecipe(enderCapacitor, " e ", "cgc", " e ", 'e', phasedGold, 'c', activatedCapacitor, 'g', Blocks.glowstone);
     }
 
     // Weather Crystal
-    ItemStack main = Config.useHardRecipes ? new ItemStack(EnderIO.itemMaterial, 1, Material.VIBRANT_CYSTAL.ordinal()) : new ItemStack(Items.diamond);
+    ItemStack main = Configs.useHardRecipes ? new ItemStack(EnderIO.itemMaterial, 1, Material.VIBRANT_CYSTAL.ordinal()) : new ItemStack(Items.diamond);
     GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(EnderIO.itemMaterial, 1, Material.WEATHER_CRYSTAL.ordinal()), main, WeatherTask.CLEAR
         .requiredItem(), WeatherTask.RAIN.requiredItem(), WeatherTask.STORM.requiredItem()));
 
-    if(Config.reinforcedObsidianEnabled) {
+    if(Configs.reinforcedObsidianEnabled) {
       ItemStack reinfObs = new ItemStack(EnderIO.blockReinforcedObsidian);
       ItemStack corners = darkSteel;
-      if(Config.reinforcedObsidianUseDarkSteelBlocks) {
+      if(Configs.reinforcedObsidianUseDarkSteelBlocks) {
         corners = new ItemStack(EnderIO.blockIngotStorage, 1, Alloy.DARK_STEEL.ordinal());
       }
       GameRegistry.addShapedRecipe(reinfObs, "dbd", "bob", "dbd", 'd', corners, 'b', EnderIO.blockDarkIronBars, 'o', Blocks.obsidian);
@@ -218,12 +218,12 @@ public class MaterialRecipes {
     ItemStack capacitor = new ItemStack(EnderIO.itemBasicCapacitor, 1, 0);
     ArrayList<ItemStack> copperIngots = OreDictionary.getOres("ingotCopper");
     Item gold;
-    if(Config.useHardRecipes) {
+    if(Configs.useHardRecipes) {
       gold = Items.gold_ingot;
     } else {
       gold = Items.gold_nugget;
     }
-    if(copperIngots != null && !copperIngots.isEmpty() && Config.useModMetals) {
+    if(copperIngots != null && !copperIngots.isEmpty() && Configs.useModMetals) {
       GameRegistry.addRecipe(new ShapedOreRecipe(capacitor, " gr", "gcg", "rg ", 'r', Items.redstone, 'g', gold, 'c', "ingotCopper"));
     } else {
       GameRegistry.
@@ -233,7 +233,7 @@ public class MaterialRecipes {
     int dustCoal = OreDictionary.getOreID("dustCoal");
     ItemStack activatedCapacitor = new ItemStack(EnderIO.itemBasicCapacitor, 1, 1);
     ItemStack energeticAlloy = new ItemStack(EnderIO.itemAlloy, 1, Alloy.ENERGETIC_ALLOY.ordinal());
-    if(Config.useHardRecipes) {
+    if(Configs.useHardRecipes) {
       GameRegistry.addRecipe(new ShapedOreRecipe(activatedCapacitor, "eee", "cCc", "eee", 'e', energeticAlloy, 'c', capacitor, 'C', "dustCoal"));
     } else {
       GameRegistry.addRecipe(new ShapedOreRecipe(activatedCapacitor, " e ", "cCc", " e ", 'e', energeticAlloy, 'c', capacitor, 'C', "dustCoal"));

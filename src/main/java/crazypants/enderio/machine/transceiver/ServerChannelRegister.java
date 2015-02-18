@@ -29,7 +29,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 import crazypants.enderio.Log;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.SlotDefinition;
 import crazypants.util.ItemUtil;
 import crazypants.util.RoundRobinIterator;
@@ -227,7 +227,7 @@ public class ServerChannelRegister extends ChannelRegister {
     RoundRobinIterator<TileTransceiver> iter = getIterator(channel);
     for (TileTransceiver trans : iter) {
       if(trans != sender && trans.getRecieveChannels(ChannelType.POWER).contains(channel)) {
-        double invLoss = 1 - Config.transceiverEnergyLoss;
+        double invLoss = 1 - Configs.transceiverEnergyLoss;
         int canSendWithLoss = (int) Math.round(canSend * invLoss);
         int recieved = trans.receiveEnergy(ForgeDirection.UNKNOWN, canSendWithLoss, false);
         if(recieved > 0) {
@@ -271,8 +271,8 @@ public class ServerChannelRegister extends ChannelRegister {
         if(trans != from) {
           int val = trans.recieveFluid(list, resource, doFill);
           if(val > 0) {
-            if(doFill && Config.transceiverBucketTransmissionCostRF > 0) {
-              int powerUsed = (int) Math.max(1, Config.transceiverBucketTransmissionCostRF * val / 1000d);
+            if(doFill && Configs.transceiverBucketTransmissionCostRF > 0) {
+              int powerUsed = (int) Math.max(1, Configs.transceiverBucketTransmissionCostRF * val / 1000d);
               from.usePower(powerUsed);
             }
             return val;

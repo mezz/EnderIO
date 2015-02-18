@@ -25,7 +25,7 @@ import crazypants.enderio.api.tool.IConduitControl;
 import crazypants.enderio.api.tool.ITool;
 import crazypants.enderio.conduit.BlockConduitBundle;
 import crazypants.enderio.conduit.ConduitDisplayMode;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.gui.IAdvancedTooltipProvider;
 import crazypants.enderio.gui.TooltipAddera;
 import crazypants.enderio.network.PacketHandler;
@@ -34,7 +34,7 @@ import crazypants.enderio.tool.ToolUtil;
 public class ItemYetaWrench extends Item implements ITool, IConduitControl, IAdvancedTooltipProvider, InvocationHandler {
 
   public static ItemYetaWrench create() {
-    if(Config.useSneakMouseWheelYetaWrench) {
+    if(Configs.useSneakMouseWheelYetaWrench) {
       PacketHandler.INSTANCE.registerMessage(YetaWrenchPacketProcessor.class, YetaWrenchPacketProcessor.class, PacketHandler.nextID(), Side.SERVER);
     }
     ItemYetaWrench result = new ItemYetaWrench();
@@ -83,7 +83,7 @@ public class ItemYetaWrench extends Item implements ITool, IConduitControl, IAdv
 
   @Override
   public ItemStack onItemRightClick(ItemStack equipped, World world, EntityPlayer player) {
-    if(!Config.useSneakRightClickYetaWrench) {
+    if(!Configs.useSneakRightClickYetaWrench) {
       return equipped;
     }
     if(!player.isSneaking()) {

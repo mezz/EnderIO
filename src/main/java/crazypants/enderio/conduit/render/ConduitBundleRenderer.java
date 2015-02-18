@@ -41,7 +41,7 @@ import crazypants.enderio.conduit.facade.BlockConduitFacade;
 import crazypants.enderio.conduit.geom.CollidableComponent;
 import crazypants.enderio.conduit.geom.ConduitConnectorType;
 import crazypants.enderio.conduit.geom.ConduitGeometryUtil;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.render.BoundingBox;
 import crazypants.render.CubeRenderer;
 import crazypants.render.IconUtil;
@@ -126,7 +126,7 @@ public class ConduitBundleRenderer extends TileEntitySpecialRenderer implements 
     if(renderConduit && BlockConduitBundle.theRenderPass == 0) {
       BlockCoord loc = bundle.getLocation();
       float brightness;
-      if(!Config.updateLightingWhenHidingFacades && bundle.hasFacade() && ConduitUtil.isFacadeHidden(bundle, player)) {
+      if(!Configs.updateLightingWhenHidingFacades && bundle.hasFacade() && ConduitUtil.isFacadeHidden(bundle, player)) {
         brightness = 15 << 20 | 15 << 4;
       } else {
         brightness = bundle.getEntity().getWorldObj().getLightBrightnessForSkyBlocks(loc.x, loc.y, loc.z, 0);

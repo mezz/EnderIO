@@ -7,7 +7,7 @@ import net.minecraft.entity.player.InventoryPlayer;
 
 import org.lwjgl.opengl.GL11;
 
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.gui.IconEIO;
 import crazypants.enderio.gui.ToggleButtonEIO;
 import crazypants.enderio.machine.IItemBuffer;
@@ -71,7 +71,7 @@ public class GuiCrafter extends GuiPoweredMachineBase<TileCrafter>  {
   
   @Override
   protected void updatePowerBarTooltip(List<String> text) {
-    text.add(PowerDisplayUtil.formatPower(Config.crafterRfPerCraft) + " " + PowerDisplayUtil.abrevation()
+    text.add(PowerDisplayUtil.formatPower(Configs.crafterRfPerCraft) + " " + PowerDisplayUtil.abrevation()
         + " " + Lang.localize("gui.machine.percraft"));
     super.updatePowerBarTooltip(text);
   }

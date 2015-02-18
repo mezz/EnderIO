@@ -5,7 +5,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import cpw.mods.fml.common.registry.GameRegistry;
 import crazypants.enderio.EnderIO;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.material.Alloy;
 import crazypants.enderio.material.Material;
 import crazypants.enderio.power.Capacitors;
@@ -18,14 +18,14 @@ public class TeleportRecipes {
     ItemStack enderCapacitor = new ItemStack(EnderIO.itemBasicCapacitor, 1, Capacitors.ENDER_CAPACITOR.ordinal());
 
     //travel blocks
-    if(Config.travelAnchorEnabled) {
+    if(Configs.travelAnchorEnabled) {
       ItemStack travelBlock = new ItemStack(EnderIO.blockTravelPlatform);
       ItemStack pulsCry = new ItemStack(EnderIO.itemMaterial, 1, Material.PULSATING_CYSTAL.ordinal());
       GameRegistry
           .addShapedRecipe(travelBlock, "ibi", "bcb", "ibi", 'i', Items.iron_ingot, 'b', conduitBinder, 'c', pulsCry);
     }
 
-    if(Config.travelStaffEnabled) {
+    if(Configs.travelStaffEnabled) {
       //travel staff
       ItemStack travelStaff = new ItemStack(EnderIO.itemTravelStaff);
       EnderIO.itemTravelStaff.setEnergy(travelStaff, 0);

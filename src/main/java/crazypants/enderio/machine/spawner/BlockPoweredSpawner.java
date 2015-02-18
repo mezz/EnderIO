@@ -34,7 +34,7 @@ import crazypants.enderio.EnderIO;
 import crazypants.enderio.GuiHandler;
 import crazypants.enderio.Log;
 import crazypants.enderio.ModObject;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.gui.IAdvancedTooltipProvider;
 import crazypants.enderio.gui.TooltipAddera;
 import crazypants.enderio.machine.AbstractMachineBlock;
@@ -99,7 +99,7 @@ public class BlockPoweredSpawner extends AbstractMachineBlock<TilePoweredSpawner
   protected BlockPoweredSpawner() {
     super(ModObject.blockPoweredSpawner, TilePoweredSpawner.class);
 
-    String[] blackListNames = Config.brokenSpawnerToolBlacklist;
+    String[] blackListNames = Configs.brokenSpawnerToolBlacklist;
     for (String name : blackListNames) {
       toolBlackList.add(new UniqueIdentifier(name));
     }
@@ -118,7 +118,7 @@ public class BlockPoweredSpawner extends AbstractMachineBlock<TilePoweredSpawner
         TileEntity tile = evt.getPlayer().worldObj.getTileEntity(evt.x, evt.y, evt.z);
         if(tile instanceof TileEntityMobSpawner) {
 
-          if(Math.random() > Config.brokenSpawnerDropChance) {
+          if(Math.random() > Configs.brokenSpawnerDropChance) {
             return;
           }
           
@@ -169,7 +169,7 @@ public class BlockPoweredSpawner extends AbstractMachineBlock<TilePoweredSpawner
       return;
     }
 
-    evt.cost = Config.powerSpawnerAddSpawnerCost;
+    evt.cost = Configs.powerSpawnerAddSpawnerCost;
     evt.output = evt.left.copy();
     if(evt.output.stackTagCompound == null) {
       evt.output.stackTagCompound = new NBTTagCompound();

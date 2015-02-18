@@ -17,7 +17,7 @@ import net.minecraftforge.event.entity.player.PlayerDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 
 public class EnchantmentSoulBound extends Enchantment {
 
@@ -30,7 +30,7 @@ public class EnchantmentSoulBound extends Enchantment {
   private final int id;
 
   private EnchantmentSoulBound(int id) {
-    super(id, Config.enchantmentSoulBoundWeight, EnumEnchantmentType.all);
+    super(id, Configs.enchantmentSoulBoundWeight, EnumEnchantmentType.all);
     this.id = id;
     setName("enderio.soulBound");
   }

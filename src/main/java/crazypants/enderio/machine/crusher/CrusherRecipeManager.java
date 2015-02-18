@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import crazypants.enderio.Log;
 import crazypants.enderio.ModObject;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.MachineRecipeInput;
 import crazypants.enderio.machine.MachineRecipeRegistry;
 import crazypants.enderio.machine.recipe.IRecipe;
@@ -157,10 +157,10 @@ public class CrusherRecipeManager {
 
   private void processConfig(RecipeConfig config) {
     if(config.isDumpItemRegistery()) {
-      Util.dumpModObjects(new File(Config.configDirectory, "modObjectsRegistery.txt"));
+      Util.dumpModObjects(new File(Configs.configDirectory, "modObjectsRegistery.txt"));
     }
     if(config.isDumpOreDictionary()) {
-      Util.dumpOreNames(new File(Config.configDirectory, "oreDictionaryRegistery.txt"));
+      Util.dumpOreNames(new File(Configs.configDirectory, "oreDictionaryRegistery.txt"));
     }
 
     List<Recipe> newRecipes = config.getRecipes(true);

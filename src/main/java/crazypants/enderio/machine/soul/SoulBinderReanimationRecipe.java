@@ -9,7 +9,7 @@ import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.item.ItemStack;
 import crazypants.enderio.EnderIO;
 import crazypants.enderio.ModObject;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.IMachineRecipe;
 import crazypants.enderio.machine.MachineRecipeInput;
 import crazypants.enderio.material.FrankenSkull;
@@ -19,7 +19,7 @@ public class SoulBinderReanimationRecipe extends AbstractSoulBinderRecipe {
   public static SoulBinderReanimationRecipe instance = new SoulBinderReanimationRecipe();
 
   private SoulBinderReanimationRecipe() {
-    super(Config.soulBinderReanimationRF, Config.soulBinderReanimationLevels, "SoulBinderReanimationRecipe", "Zombie", "SpecialMobs.SpecialZombie");
+    super(Configs.soulBinderReanimationRF, Configs.soulBinderReanimationLevels, "SoulBinderReanimationRecipe", "Zombie", "SpecialMobs.SpecialZombie");
   }
 
   @Override

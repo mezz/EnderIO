@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.ChestGenHooks;
 
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import net.minecraftforge.client.MinecraftForgeClient;
 
 public class DarkSteelItems {
@@ -38,7 +38,7 @@ public class DarkSteelItems {
   }
 
   public static void addLoot() {
-    if(Config.lootTheEnder) {
+    if(Configs.lootTheEnder) {
       ItemStack sword = new ItemStack(itemDarkSteelSword, 1, 0);
       ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST).addItem(new WeightedRandomChestContent(sword, 1, 1, 5));
       ChestGenHooks.getInfo(ChestGenHooks.VILLAGE_BLACKSMITH).addItem(new WeightedRandomChestContent(sword, 1, 1, 5));
@@ -46,7 +46,7 @@ public class DarkSteelItems {
       ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_JUNGLE_CHEST).addItem(new WeightedRandomChestContent(sword, 1, 1, 4));
     }
 
-    if(Config.lootDarkSteelBoots) {
+    if(Configs.lootDarkSteelBoots) {
       ItemStack boots = new ItemStack(itemDarkSteelBoots, 1, 0);
       ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST).addItem(new WeightedRandomChestContent(boots, 1, 1, 5));
       ChestGenHooks.getInfo(ChestGenHooks.VILLAGE_BLACKSMITH).addItem(new WeightedRandomChestContent(boots, 1, 1, 5));

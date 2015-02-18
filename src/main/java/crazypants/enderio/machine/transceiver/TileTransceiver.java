@@ -18,7 +18,7 @@ import net.minecraftforge.fluids.IFluidHandler;
 import crazypants.enderio.ModObject;
 import crazypants.enderio.conduit.item.FilterRegister;
 import crazypants.enderio.conduit.item.filter.ItemFilter;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.AbstractPoweredTaskEntity;
 import crazypants.enderio.machine.ContinuousTask;
 import crazypants.enderio.machine.IItemBuffer;
@@ -41,7 +41,7 @@ public class TileTransceiver extends AbstractPoweredTaskEntity implements IFluid
   private final EnumMap<ChannelType, List<Channel>> sendChannels = new EnumMap<ChannelType, List<Channel>>(ChannelType.class);
   private final EnumMap<ChannelType, List<Channel>> recieveChannels = new EnumMap<ChannelType, List<Channel>>(ChannelType.class);
 
-  private ICapacitor capacitor = new BasicCapacitor(Config.transceiverMaxIoRF * 2, 500000, Config.transceiverMaxIoRF);
+  private ICapacitor capacitor = new BasicCapacitor(Configs.transceiverMaxIoRF * 2, 500000, Configs.transceiverMaxIoRF);
   private boolean sendChannelsDirty = false;
   private boolean recieveChannelsDirty = false;
   private boolean registered = false;
@@ -66,7 +66,7 @@ public class TileTransceiver extends AbstractPoweredTaskEntity implements IFluid
       sendChannels.put(type, new ArrayList<Channel>());
       recieveChannels.put(type, new ArrayList<Channel>());
     }
-    currentTask = new ContinuousTask(Config.transceiverUpkeepCostRF);
+    currentTask = new ContinuousTask(Configs.transceiverUpkeepCostRF);
     railController = new EnderRailController(this);
 
     sendItemFilter = new ItemFilter(true);
@@ -166,7 +166,7 @@ public class TileTransceiver extends AbstractPoweredTaskEntity implements IFluid
 
   @Override
   public int getPowerUsePerTick() {
-    return Config.transceiverUpkeepCostRF;
+    return Configs.transceiverUpkeepCostRF;
   }
 
   public List<Channel> getSendChannels(ChannelType type) {
@@ -228,7 +228,7 @@ public class TileTransceiver extends AbstractPoweredTaskEntity implements IFluid
   public void readCustomNBT(NBTTagCompound nbtRoot) {
     super.readCustomNBT(nbtRoot);
     railController.readFromNBT(nbtRoot);
-    currentTask = new ContinuousTask(Config.transceiverUpkeepCostRF);
+    currentTask = new ContinuousTask(Configs.transceiverUpkeepCostRF);
   }
 
   @Override

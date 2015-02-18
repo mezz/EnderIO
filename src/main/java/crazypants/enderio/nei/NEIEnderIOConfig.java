@@ -6,7 +6,7 @@ import codechicken.nei.api.API;
 import codechicken.nei.api.IConfigureNEI;
 import crazypants.enderio.EnderIO;
 import crazypants.enderio.conduit.gas.GasUtil;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.painter.PainterUtil;
 
 public class NEIEnderIOConfig implements IConfigureNEI {
@@ -42,22 +42,22 @@ public class NEIEnderIOConfig implements IConfigureNEI {
     API.hideItem(PainterUtil.applyDefaultPaintedState(new ItemStack(EnderIO.blockPaintedWall)));
     API.hideItem(PainterUtil.applyDefaultPaintedState(new ItemStack(EnderIO.blockPaintedDoubleSlab)));
 
-    if(!Config.photovoltaicCellEnabled) {
+    if(!Configs.photovoltaicCellEnabled) {
       API.hideItem(new ItemStack(EnderIO.blockSolarPanel));
     }
-    if(!Config.travelAnchorEnabled) {
+    if(!Configs.travelAnchorEnabled) {
       API.hideItem(new ItemStack(EnderIO.itemTravelStaff));
     }
-    if(!Config.reinforcedObsidianEnabled) {
+    if(!Configs.reinforcedObsidianEnabled) {
       API.hideItem(new ItemStack(EnderIO.blockReinforcedObsidian));
     }
-    if((!Config.transceiverEnabled || !Config.enderRailEnabled) && EnderIO.blockEnderRail != null) {
+    if((!Configs.transceiverEnabled || !Configs.enderRailEnabled) && EnderIO.blockEnderRail != null) {
       API.hideItem(new ItemStack(EnderIO.blockEnderRail));
     }
-    if(!Config.transceiverEnabled && EnderIO.blockTransceiver != null) {
+    if(!Configs.transceiverEnabled && EnderIO.blockTransceiver != null) {
       API.hideItem(new ItemStack(EnderIO.blockTransceiver));
     }
-    if(!Config.reservoirEnabled) {
+    if(!Configs.reservoirEnabled) {
       API.hideItem(new ItemStack(EnderIO.blockReservoir));
     }
     if(!GasUtil.isGasConduitEnabled()) {

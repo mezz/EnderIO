@@ -4,36 +4,36 @@ import io.netty.buffer.ByteBuf;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 
 public class PacketConfigSync implements IMessage, IMessageHandler<PacketConfigSync, IMessage> {
 
   @Override
   public void toBytes(ByteBuf buf) {
-    buf.writeBoolean(Config.travelAnchorEnabled);
-    buf.writeInt(Config.travelAnchorMaxDistance);
-    buf.writeBoolean(Config.travelStaffEnabled);
-    buf.writeBoolean(Config.travelStaffBlinkEnabled);
-    buf.writeBoolean(Config.travelStaffBlinkThroughSolidBlocksEnabled);
-    buf.writeBoolean(Config.travelStaffBlinkThroughClearBlocksEnabled);
-    buf.writeInt(Config.travelStaffBlinkPauseTicks);
-    buf.writeInt(Config.travelStaffMaxDistance);
-    buf.writeInt(Config.travelStaffMaxBlinkDistance);
-    buf.writeFloat(Config.travelStaffPowerPerBlockRF);
+    buf.writeBoolean(Configs.travelAnchorEnabled);
+    buf.writeInt(Configs.travelAnchorMaxDistance);
+    buf.writeBoolean(Configs.travelStaffEnabled);
+    buf.writeBoolean(Configs.travelStaffBlinkEnabled);
+    buf.writeBoolean(Configs.travelStaffBlinkThroughSolidBlocksEnabled);
+    buf.writeBoolean(Configs.travelStaffBlinkThroughClearBlocksEnabled);
+    buf.writeInt(Configs.travelStaffBlinkPauseTicks);
+    buf.writeInt(Configs.travelStaffMaxDistance);
+    buf.writeInt(Configs.travelStaffMaxBlinkDistance);
+    buf.writeFloat(Configs.travelStaffPowerPerBlockRF);
   }
 
   @Override
   public void fromBytes(ByteBuf data) {
-    Config.travelAnchorEnabled = data.readBoolean();
-    Config.travelAnchorMaxDistance = data.readInt();
-    Config.travelStaffEnabled = data.readBoolean();
-    Config.travelStaffBlinkEnabled = data.readBoolean();
-    Config.travelStaffBlinkThroughSolidBlocksEnabled = data.readBoolean();
-    Config.travelStaffBlinkThroughClearBlocksEnabled = data.readBoolean();
-    Config.travelStaffBlinkPauseTicks = data.readInt();
-    Config.travelStaffMaxDistance = data.readInt();
-    Config.travelStaffMaxBlinkDistance = data.readInt();
-    Config.travelStaffPowerPerBlockRF = data.readFloat();
+    Configs.travelAnchorEnabled = data.readBoolean();
+    Configs.travelAnchorMaxDistance = data.readInt();
+    Configs.travelStaffEnabled = data.readBoolean();
+    Configs.travelStaffBlinkEnabled = data.readBoolean();
+    Configs.travelStaffBlinkThroughSolidBlocksEnabled = data.readBoolean();
+    Configs.travelStaffBlinkThroughClearBlocksEnabled = data.readBoolean();
+    Configs.travelStaffBlinkPauseTicks = data.readInt();
+    Configs.travelStaffMaxDistance = data.readInt();
+    Configs.travelStaffMaxBlinkDistance = data.readInt();
+    Configs.travelStaffPowerPerBlockRF = data.readFloat();
   }
 
   @Override

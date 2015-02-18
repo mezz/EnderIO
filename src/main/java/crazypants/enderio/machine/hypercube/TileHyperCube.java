@@ -21,7 +21,7 @@ import net.minecraftforge.fluids.IFluidHandler;
 import crazypants.enderio.EnderIO;
 import crazypants.enderio.ModObject;
 import crazypants.enderio.TileEntityEio;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.IRedstoneModeControlable;
 import crazypants.enderio.machine.RedstoneControlMode;
 import crazypants.enderio.power.BasicCapacitor;
@@ -35,11 +35,11 @@ import crazypants.vecmath.VecmathUtil;
 
 public class TileHyperCube extends TileEntityEio implements IInternalPowerHandler, IFluidHandler, ISidedInventory, IRedstoneModeControlable {
 
-  private static final double ENERGY_LOSS = Config.transceiverEnergyLoss;
+  private static final double ENERGY_LOSS = Configs.transceiverEnergyLoss;
 
-  private static final int ENERGY_UPKEEP = Config.transceiverUpkeepCostRF;
+  private static final int ENERGY_UPKEEP = Configs.transceiverUpkeepCostRF;
 
-  private static final float MILLIBUCKET_TRANSMISSION_COST = Config.transceiverBucketTransmissionCostRF / 1000F;
+  private static final float MILLIBUCKET_TRANSMISSION_COST = Configs.transceiverBucketTransmissionCostRF / 1000F;
 
   public static enum IoMode {
 
@@ -97,7 +97,7 @@ public class TileHyperCube extends TileEntityEio implements IInternalPowerHandle
     ITEM
   }
 
-  private final BasicCapacitor internalCapacitor = new BasicCapacitor(Config.transceiverMaxIoRF, 25000);
+  private final BasicCapacitor internalCapacitor = new BasicCapacitor(Configs.transceiverMaxIoRF, 25000);
 
   private int lastSyncPowerStored = 0;
   private int storedEnergyRF;
@@ -215,7 +215,7 @@ public class TileHyperCube extends TileEntityEio implements IInternalPowerHandle
           int curPower = cube.getEnergyStored();
           int requires = cube.getMaxEnergyStored() - curPower;
           int transfer = Math.min(requires, stored);
-          transfer = Math.min(transfer, Config.transceiverMaxIoRF);
+          transfer = Math.min(transfer, Configs.transceiverMaxIoRF);
           cube.setEnergyStored(curPower + (int)Math.round((1 - ENERGY_LOSS) * transfer));
           setEnergyStored(getEnergyStored() - transfer);
         }

@@ -1,7 +1,5 @@
 package crazypants.enderio.config;
 
-import static crazypants.enderio.config.Config.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +9,6 @@ import net.minecraftforge.common.config.ConfigElement;
 import cpw.mods.fml.client.config.GuiConfig;
 import cpw.mods.fml.client.config.IConfigElement;
 import crazypants.enderio.EnderIO;
-import crazypants.enderio.config.Config.Section;
 import crazypants.util.Lang;
 
 @SuppressWarnings({ "rawtypes" })
@@ -27,8 +24,8 @@ public class GuiConfigFactoryEIO extends GuiConfig {
     List<IConfigElement> list = new ArrayList<IConfigElement>();
     String prefix = Lang.prefix + "config.";
     
-    for (Section section : Config.sections) {
-      list.add(new ConfigElement<ConfigCategory>(config.getCategory(section.lc()).setLanguageKey(prefix + section.lang)));
+    for (String section : Configs.getProcessor().sections()) {
+      list.add(new ConfigElement<ConfigCategory>(Configs.getProcessor().getCategory(section.toLowerCase()).setLanguageKey(prefix + section.toLowerCase().replace(" ", "_"))));
     }
     
     return list;

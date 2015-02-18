@@ -11,7 +11,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import crazypants.enderio.EnderIO;
 import crazypants.enderio.ModObject;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.AbstractPowerConsumerEntity;
 import crazypants.enderio.machine.SlotDefinition;
 import crazypants.enderio.machine.ranged.IRanged;
@@ -85,17 +85,17 @@ public class TileSpawnGuard extends AbstractPowerConsumerEntity implements IRang
   private void setUpdrade(Capacitors capacitorType) {    
     switch (capacitorType) {
     case ACTIVATED_CAPACITOR:
-      range = Config.spawnGuardRangeLevelTwo;
-      powerPerTick = Config.spawnGuardPowerPerTickLevelTwo;
+      range = Configs.spawnGuardRangeLevelTwo;
+      powerPerTick = Configs.spawnGuardPowerPerTickLevelTwo;
       break;
     case ENDER_CAPACITOR:
-      range = Config.spawnGuardRangeLevelThree;
-      powerPerTick = Config.spawnGuardPowerPerTickLevelThree;
+      range = Configs.spawnGuardRangeLevelThree;
+      powerPerTick = Configs.spawnGuardPowerPerTickLevelThree;
       break;
     case BASIC_CAPACITOR:
     default:
-      range = Config.spawnGuardRangeLevelOne;
-      powerPerTick = Config.spawnGuardPowerPerTickLevelOne;
+      range = Configs.spawnGuardRangeLevelOne;
+      powerPerTick = Configs.spawnGuardPowerPerTickLevelOne;
       break;
     }
     rangeSqu = range * range;    

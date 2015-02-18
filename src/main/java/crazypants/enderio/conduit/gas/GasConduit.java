@@ -17,7 +17,7 @@ import crazypants.enderio.conduit.AbstractConduitNetwork;
 import crazypants.enderio.conduit.ConnectionMode;
 import crazypants.enderio.conduit.IConduit;
 import crazypants.enderio.conduit.geom.CollidableComponent;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.render.IconUtil;
 import crazypants.util.BlockCoord;
 
@@ -58,9 +58,9 @@ public class GasConduit extends AbstractGasTankConduit {
 
   private long ticksSinceFailedExtract = 0;
 
-  public static final int MAX_EXTRACT_PER_TICK = Config.gasConduitExtractRate;
+  public static final int MAX_EXTRACT_PER_TICK = Configs.gasConduitExtractRate;
 
-  public static final int MAX_IO_PER_TICK = Config.gasConduitMaxIoRate;
+  public static final int MAX_IO_PER_TICK = Configs.gasConduitMaxIoRate;
 
   public GasConduit() {
     updateTank();

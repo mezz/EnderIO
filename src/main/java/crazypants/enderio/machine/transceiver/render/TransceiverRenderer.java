@@ -19,7 +19,7 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
 import crazypants.enderio.EnderIO;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.AbstractMachineBlock;
 import crazypants.enderio.machine.IoMode;
 import crazypants.enderio.machine.transceiver.TileTransceiver;
@@ -42,7 +42,7 @@ public class TransceiverRenderer extends TileEntitySpecialRenderer implements II
 
   public TransceiverRenderer() {
     float scale = 0.7f;
-    if(Config.useAlternateTesseractModel) {
+    if(Configs.useAlternateTesseractModel) {
       model = new TransceiverModelAlt();
       scale = 0.8f;
       adjustForItem = true;

@@ -61,7 +61,7 @@ import crazypants.enderio.conduit.power.ItemPowerConduit;
 import crazypants.enderio.conduit.redstone.ConduitBundledRedstoneProvider;
 import crazypants.enderio.conduit.redstone.InsulatedRedstoneConduit;
 import crazypants.enderio.conduit.redstone.ItemRedstoneConduit;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.enchantment.Enchantments;
 import crazypants.enderio.enderface.BlockEnderIO;
 import crazypants.enderio.enderface.EnderfaceRecipes;
@@ -297,9 +297,9 @@ public class EnderIO {
   @EventHandler
   public void preInit(FMLPreInitializationEvent event) {
 
-    Config.load(event);
+    Configs.load(event);
 
-    ConduitGeometryUtil.setupBounds((float) Config.conduitScale);
+    ConduitGeometryUtil.setupBounds((float) Configs.conduitScale);
 
     blockStirlingGenerator = BlockStirlingGenerator.create();
     blockCombustionGenerator = BlockCombustionGenerator.create();
@@ -433,29 +433,29 @@ public class EnderIO {
     FluidRegistry.registerFluid(f);
     fluidHootch = FluidRegistry.getFluid(f.getName());
     blockHootch = BlockFluidEio.create(fluidHootch, Material.water);
-    FluidFuelRegister.instance.addFuel(f, Config.hootchPowerPerCycleRF, Config.hootchPowerTotalBurnTime);
+    FluidFuelRegister.instance.addFuel(f, Configs.hootchPowerPerCycleRF, Configs.hootchPowerTotalBurnTime);
     FMLInterModComms.sendMessage("Railcraft", "boiler-fuel-liquid", Fluids.HOOTCH_NAME + "@"
-        + (Config.hootchPowerPerCycleRF / 10 * Config.hootchPowerTotalBurnTime));
+        + (Configs.hootchPowerPerCycleRF / 10 * Configs.hootchPowerTotalBurnTime));
 
     f = new Fluid(Fluids.ROCKET_FUEL_NAME).setDensity(900).setViscosity(1000);
     FluidRegistry.registerFluid(f);
     fluidRocketFuel = FluidRegistry.getFluid(f.getName());
     blockRocketFuel = BlockFluidEio.create(fluidRocketFuel, Material.water);
-    FluidFuelRegister.instance.addFuel(f, Config.rocketFuelPowerPerCycleRF, Config.rocketFuelPowerTotalBurnTime);
+    FluidFuelRegister.instance.addFuel(f, Configs.rocketFuelPowerPerCycleRF, Configs.rocketFuelPowerTotalBurnTime);
     FMLInterModComms.sendMessage("Railcraft", "boiler-fuel-liquid", Fluids.ROCKET_FUEL_NAME + "@"
-        + (Config.rocketFuelPowerPerCycleRF / 10 * Config.rocketFuelPowerTotalBurnTime));
+        + (Configs.rocketFuelPowerPerCycleRF / 10 * Configs.rocketFuelPowerTotalBurnTime));
 
     f = new Fluid(Fluids.FIRE_WATER_NAME).setDensity(900).setViscosity(1000);
     FluidRegistry.registerFluid(f);
     fluidFireWater = FluidRegistry.getFluid(f.getName());
     blockFireWater = BlockFluidEio.create(fluidFireWater, Material.lava);
-    FluidFuelRegister.instance.addFuel(f, Config.fireWaterPowerPerCycleRF, Config.fireWaterPowerTotalBurnTime);
+    FluidFuelRegister.instance.addFuel(f, Configs.fireWaterPowerPerCycleRF, Configs.fireWaterPowerTotalBurnTime);
     FMLInterModComms.sendMessage("Railcraft", "boiler-fuel-liquid", Fluids.FIRE_WATER_NAME + "@"
-        + (Config.fireWaterPowerPerCycleRF / 10 * Config.fireWaterPowerTotalBurnTime));
+        + (Configs.fireWaterPowerPerCycleRF / 10 * Configs.fireWaterPowerTotalBurnTime));
 
     if(!Loader.isModLoaded("OpenBlocks")) {
       Log.info("XP Juice registered by Ender IO.");
-      fluidXpJuice = new Fluid(Config.xpJuiceName).setLuminosity(10).setDensity(800).setViscosity(1500).setUnlocalizedName("eio.xpjuice");
+      fluidXpJuice = new Fluid(Configs.xpJuiceName).setLuminosity(10).setDensity(800).setViscosity(1500).setUnlocalizedName("eio.xpjuice");
       FluidRegistry.registerFluid(fluidXpJuice);
       itemBucketXpJuice = ItemBucketEio.create(fluidXpJuice);
     } else {
@@ -471,7 +471,7 @@ public class EnderIO {
   @EventHandler
   public void load(FMLInitializationEvent event) {
 
-    Config.init();
+    Configs.init();
     
     instance = this;
 
@@ -482,53 +482,53 @@ public class EnderIO {
     MinecraftForge.EVENT_BUS.register(this);
 
     //Register Custom Dungeon Loot here
-    if(Config.lootDarkSteel) {
+    if(Configs.lootDarkSteel) {
       ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST).addItem(
           new WeightedRandomChestContent(new ItemStack(EnderIO.itemAlloy, 1, Alloy.DARK_STEEL.ordinal()), 1, 3, 15));
     }
 
-    if(Config.lootItemConduitProbe) {
+    if(Configs.lootItemConduitProbe) {
       ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST).addItem(new WeightedRandomChestContent(new ItemStack(EnderIO.itemConduitProbe, 1, 0), 1, 1, 10));
     }
 
-    if(Config.lootQuartz) {
+    if(Configs.lootQuartz) {
       ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST).addItem(new WeightedRandomChestContent(new ItemStack(Items.quartz), 3, 16, 20));
     }
 
-    if(Config.lootNetherWart) {
+    if(Configs.lootNetherWart) {
       ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST).addItem(new WeightedRandomChestContent(new ItemStack(Items.nether_wart), 1, 4, 10));
     }
 
-    if(Config.lootEnderPearl) {
+    if(Configs.lootEnderPearl) {
       ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST).addItem(new WeightedRandomChestContent(new ItemStack(Items.ender_pearl), 1, 2, 30));
     }
 
-    if(Config.lootElectricSteel) {
+    if(Configs.lootElectricSteel) {
       ChestGenHooks.getInfo(ChestGenHooks.VILLAGE_BLACKSMITH).addItem(
           new WeightedRandomChestContent(new ItemStack(EnderIO.itemAlloy, 1, Alloy.ELECTRICAL_STEEL.ordinal()), 2, 6, 20));
     }
 
-    if(Config.lootRedstoneAlloy) {
+    if(Configs.lootRedstoneAlloy) {
       ChestGenHooks.getInfo(ChestGenHooks.VILLAGE_BLACKSMITH).addItem(
           new WeightedRandomChestContent(new ItemStack(EnderIO.itemAlloy, 1, Alloy.REDSTONE_ALLOY.ordinal()), 3, 6, 35));
     }
 
-    if(Config.lootDarkSteel) {
+    if(Configs.lootDarkSteel) {
       ChestGenHooks.getInfo(ChestGenHooks.VILLAGE_BLACKSMITH).addItem(
           new WeightedRandomChestContent(new ItemStack(EnderIO.itemAlloy, 1, Alloy.DARK_STEEL.ordinal()), 3, 6, 35));
     }
 
-    if(Config.lootPhasedIron) {
+    if(Configs.lootPhasedIron) {
       ChestGenHooks.getInfo(ChestGenHooks.VILLAGE_BLACKSMITH).addItem(
           new WeightedRandomChestContent(new ItemStack(EnderIO.itemAlloy, 1, Alloy.PHASED_IRON.ordinal()), 1, 2, 10));
     }
 
-    if(Config.lootPhasedGold) {
+    if(Configs.lootPhasedGold) {
       ChestGenHooks.getInfo(ChestGenHooks.VILLAGE_BLACKSMITH).addItem(
           new WeightedRandomChestContent(new ItemStack(EnderIO.itemAlloy, 1, Alloy.PHASED_GOLD.ordinal()), 1, 2, 5));
     }
 
-    if(Config.lootTravelStaff) {
+    if(Configs.lootTravelStaff) {
       ItemStack staff = new ItemStack(EnderIO.itemTravelStaff, 1, 0);
       ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_DESERT_CHEST).addItem(new WeightedRandomChestContent(staff, 1, 1, 3));
       ChestGenHooks.getInfo(ChestGenHooks.PYRAMID_JUNGLE_CHEST).addItem(new WeightedRandomChestContent(staff, 1, 1, 3));
@@ -540,7 +540,7 @@ public class EnderIO {
       ConduitBundledRedstoneProvider.register();
     }
 
-    if(Config.replaceWitherSkeletons)
+    if(Configs.replaceWitherSkeletons)
     {
       SkeletonHandler.registerSkeleton(this);
     }
@@ -559,7 +559,7 @@ public class EnderIO {
   @EventHandler
   public void postInit(FMLPostInitializationEvent event) {
 
-    Config.postInit();
+    Configs.postInit();
     
     //Regsiter the enchants
     Enchantments.getInstance();
@@ -589,8 +589,8 @@ public class EnderIO {
       }
     }
 
-    if(Config.dumpMobNames) {
-      File dumpFile = new File(Config.configDirectory, "mobTypes.txt");
+    if(Configs.dumpMobNames) {
+      File dumpFile = new File(Configs.configDirectory, "mobTypes.txt");
       List<String> names = EntityUtil.getAllRegisteredMobNames(false);
 
       try {
@@ -624,12 +624,12 @@ public class EnderIO {
     }catch(Exception e) {
     }
 
-    if(openBlocksXPJuiceName != null && !Config.xpJuiceName.equals(openBlocksXPJuiceName)) {
+    if(openBlocksXPJuiceName != null && !Configs.xpJuiceName.equals(openBlocksXPJuiceName)) {
       Log.info("Overwriting XP Juice name with '" + openBlocksXPJuiceName + "' taken from OpenBlocks' config");
       return openBlocksXPJuiceName;
     }
 
-    return Config.xpJuiceName;
+    return Configs.xpJuiceName;
   }
 
   @SuppressWarnings("unchecked")

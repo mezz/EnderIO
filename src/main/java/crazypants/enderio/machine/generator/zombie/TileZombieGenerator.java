@@ -11,7 +11,7 @@ import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 import crazypants.enderio.EnderIO;
 import crazypants.enderio.ModObject;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.IoMode;
 import crazypants.enderio.machine.SlotDefinition;
 import crazypants.enderio.machine.generator.AbstractGeneratorEntity;
@@ -26,8 +26,8 @@ public class TileZombieGenerator extends AbstractGeneratorEntity implements IFlu
 
   final NutrientTank fuelTank = new NutrientTank(FluidContainerRegistry.BUCKET_VOLUME * 2);
 
-  int outputPerTick = Config.zombieGeneratorRfPerTick;
-  int tickPerBucketOfFuel = Config.zombieGeneratorTicksPerBucketFuel;
+  int outputPerTick = Configs.zombieGeneratorRfPerTick;
+  int tickPerBucketOfFuel = Configs.zombieGeneratorTicksPerBucketFuel;
 
   private boolean tanksDirty;
   private boolean active = false;

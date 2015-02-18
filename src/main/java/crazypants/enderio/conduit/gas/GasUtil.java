@@ -6,7 +6,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockAccess;
 import cpw.mods.fml.common.Loader;
 import crazypants.enderio.conduit.IConduitBundle;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.util.BlockCoord;
 
 public final class GasUtil {
@@ -16,7 +16,7 @@ public final class GasUtil {
 
   public static boolean isGasConduitEnabled() {
     if(!useCheckPerformed) {
-      String configOption = Config.isGasConduitEnabled;
+      String configOption = Configs.isGasConduitEnabled;
       if(configOption.equalsIgnoreCase("auto")) {
         isGasConduitEnabled = Loader.isModLoaded("Mekanism");        
       } else if(configOption.equalsIgnoreCase("true")) {

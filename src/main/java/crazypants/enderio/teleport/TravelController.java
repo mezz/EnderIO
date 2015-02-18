@@ -29,7 +29,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import crazypants.enderio.EnderIO;
 import crazypants.enderio.GuiHandler;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.enderface.TileEnderIO;
 import crazypants.enderio.network.PacketHandler;
 import crazypants.enderio.teleport.packet.PacketDrainStaff;
@@ -70,7 +70,7 @@ public class TravelController {
   private final List<UniqueIdentifier> blackList = new ArrayList<GameRegistry.UniqueIdentifier>();
 
   private TravelController() {
-    String[] blackListNames = Config.travelStaffBlinkBlackList;
+    String[] blackListNames = Configs.travelStaffBlinkBlackList;
     for(String name : blackListNames) {
       blackList.add(new UniqueIdentifier(name));  
     }    
@@ -96,7 +96,7 @@ public class TravelController {
     }
     if(isTargetEnderIO()) {
       openEnderIO(equipped, world, player);
-    } else if(Config.travelAnchorEnabled) {
+    } else if(Configs.travelAnchorEnabled) {
       travelToSelectedTarget(player, source, false);
     }
     return true;
@@ -107,7 +107,7 @@ public class TravelController {
     Vector3d look = Util.getLookVecEio(player);
 
     Vector3d sample = new Vector3d(look);
-    sample.scale(Config.travelStaffMaxBlinkDistance);
+    sample.scale(Configs.travelStaffMaxBlinkDistance);
     sample.add(eye);
     Vec3 eye3 = Vec3.createVectorHelper(eye.x, eye.y, eye.z);
     Vec3 end = Vec3.createVectorHelper(sample.x, sample.y, sample.z);
@@ -115,9 +115,9 @@ public class TravelController {
     double playerHeight = player.yOffset;
     //if you looking at you feet, and your player height to the max distance, or part there of
     double lookComp = -look.y * playerHeight;
-    double maxDistance = Config.travelStaffMaxBlinkDistance + lookComp;
+    double maxDistance = Configs.travelStaffMaxBlinkDistance + lookComp;
 
-    MovingObjectPosition p = player.worldObj.rayTraceBlocks(eye3, end, !Config.travelStaffBlinkThroughClearBlocksEnabled);
+    MovingObjectPosition p = player.worldObj.rayTraceBlocks(eye3, end, !Configs.travelStaffBlinkThroughClearBlocksEnabled);
     if(p == null) {
 
       //go as far as possible
@@ -135,7 +135,7 @@ public class TravelController {
       return false;
     } else {
 
-      List<MovingObjectPosition> res = Util.raytraceAll(player.worldObj, eye3, end, !Config.travelStaffBlinkThroughClearBlocksEnabled);
+      List<MovingObjectPosition> res = Util.raytraceAll(player.worldObj, eye3, end, !Configs.travelStaffBlinkThroughClearBlocksEnabled);
       for (MovingObjectPosition pos : res) {
         if(pos != null) {
           Block hitBlock = player.worldObj.getBlock(pos.blockX, pos.blockY, pos.blockZ);
@@ -188,7 +188,7 @@ public class TravelController {
     if(ui == null) {
       return false;
     }
-    return blackList.contains(ui) && (hitBlock.getBlockHardness(player.worldObj, pos.blockX, pos.blockY, pos.blockZ) < 0 || !Config.travelStaffBlinkThroughUnbreakableBlocksEnabled);
+    return blackList.contains(ui) && (hitBlock.getBlockHardness(player.worldObj, pos.blockX, pos.blockY, pos.blockZ) < 0 || !Configs.travelStaffBlinkThroughUnbreakableBlocksEnabled);
   }
 
   private boolean doBlinkAround(EntityPlayer player, Vector3d sample, boolean conserveMomentum) {
@@ -295,7 +295,7 @@ public class TravelController {
 
         if(isTargetEnderIO()) {
           openEnderIO(null, player.worldObj, player);
-        } else if(Config.travelAnchorEnabled && travelToSelectedTarget(player, TravelSource.BLOCK, false)) {
+        } else if(Configs.travelAnchorEnabled && travelToSelectedTarget(player, TravelSource.BLOCK, false)) {
           input.jump = false;
           try{ 
             ObfuscationReflectionHelper.setPrivateValue(EntityPlayer.class, (EntityPlayer)player, 0, "flyToggleTimer", "field_71101_bC");
@@ -450,7 +450,7 @@ public class TravelController {
     if(bc.y < 1) {
       return false;
     }
-    if(source == TravelSource.STAFF_BLINK && !Config.travelStaffBlinkThroughSolidBlocksEnabled) {
+    if(source == TravelSource.STAFF_BLINK && !Configs.travelStaffBlinkThroughSolidBlocksEnabled) {
       Vec3 start = Util.getEyePosition(player);
       Vec3 target = Vec3.createVectorHelper(bc.x + 0.5f, bc.y + 0.5f, bc.z + 0.5f);
       if(!canBlinkTo(bc, w, start, target)) {
@@ -467,9 +467,9 @@ public class TravelController {
   }
 
   private boolean canBlinkTo(BlockCoord bc, World w, Vec3 start, Vec3 target) {
-    MovingObjectPosition p = w.rayTraceBlocks(start, target, !Config.travelStaffBlinkThroughClearBlocksEnabled);
+    MovingObjectPosition p = w.rayTraceBlocks(start, target, !Configs.travelStaffBlinkThroughClearBlocksEnabled);
     if(p != null) {
-      if(!Config.travelStaffBlinkThroughClearBlocksEnabled) {
+      if(!Configs.travelStaffBlinkThroughClearBlocksEnabled) {
         return false;
       }
       Block block = w.getBlock(p.blockX, p.blockY, p.blockZ);
@@ -573,7 +573,7 @@ public class TravelController {
       scale = tanFovRad * eyePoint.distance(loc);
       
       //Using this scale will give us the block full screen, we will make it 20% of the screen
-      scale *= Config.travelAnchorZoomScale;      
+      scale *= Configs.travelAnchorZoomScale;      
 
       //only apply 70% of the scaling so more distance targets are still smaller than closer targets
       float nf = 1 - MathHelper.clamp_float((float) eyePoint.distanceSquared(loc) / TravelSource.STAFF.maxDistanceTravelledSq, 0, 1);

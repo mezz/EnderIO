@@ -4,7 +4,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import crazypants.enderio.EnderIO;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.material.Material;
 
 public class SpoonUpgrade extends AbstractUpgrade {
@@ -32,7 +32,7 @@ public class SpoonUpgrade extends AbstractUpgrade {
   }
 
   public SpoonUpgrade() {
-    super(UPGRADE_NAME, "enderio.darksteel.upgrade.spoon", new ItemStack(Items.diamond_shovel), Config.darkSteelSpoonCost);
+    super(UPGRADE_NAME, "enderio.darksteel.upgrade.spoon", new ItemStack(Items.diamond_shovel), Configs.darkSteelSpoonCost);
   }  
   
   @Override

@@ -29,7 +29,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.GameRegistry.UniqueIdentifier;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.fluid.FluidFuelRegister;
 import crazypants.enderio.fluid.IFluidCoolant;
 import crazypants.enderio.fluid.IFluidFuel;
@@ -58,7 +58,7 @@ public class TooltipAddera {
     if(evt.itemStack == null) {
       return;
     }
-    if(Config.addFurnaceFuelTootip) {
+    if(Configs.addFurnaceFuelTootip) {
       if(!addStirlinGeneratorTooltip(evt)) {
         int time = TileEntityFurnace.getItemBurnTime(evt.itemStack);
         if(time > 0) {
@@ -67,7 +67,7 @@ public class TooltipAddera {
       }
     }
 
-    if(Config.addDurabilityTootip) {
+    if(Configs.addDurabilityTootip) {
       addDurabilityTooltip(evt.toolTip, evt.itemStack);
     }
 
@@ -89,7 +89,7 @@ public class TooltipAddera {
       return;
     }
 
-    if(Config.addFuelTooltipsToAllFluidContainers) {
+    if(Configs.addFuelTooltipsToAllFluidContainers) {
       addTooltipForFluid(evt.toolTip, evt.itemStack);
     }
 
@@ -99,7 +99,7 @@ public class TooltipAddera {
       addInformation(btp, evt.itemStack, evt.entityPlayer, evt.toolTip, false);
     }
 
-    if(Config.addRegisterdNameTooltip) {
+    if(Configs.addRegisterdNameTooltip) {
       UniqueIdentifier uid;
       Block block = Block.getBlockFromItem(evt.itemStack.getItem());
       if(block != null && block != Blocks.air) {
@@ -112,7 +112,7 @@ public class TooltipAddera {
       }
     }
 
-    if(Config.addOreDictionaryTooltips) {
+    if(Configs.addOreDictionaryTooltips) {
       int[] ids = OreDictionary.getOreIDs(evt.itemStack);
       if(ids != null && ids.length > 0) {
         if(ids.length == 1) {

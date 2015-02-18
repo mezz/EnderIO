@@ -12,7 +12,7 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
 import crazypants.enderio.EnderIO;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.render.BoundingBox;
 import crazypants.render.CubeRenderer;
 import crazypants.render.RenderUtil;
@@ -27,7 +27,7 @@ public class HyperCubeRenderer extends TileEntitySpecialRenderer implements IIte
 
   public HyperCubeRenderer() {
     float scale = 0.7f;
-    if(Config.useAlternateTesseractModel) {
+    if(Configs.useAlternateTesseractModel) {
       model = new HyperCubeModel2();
       scale = 0.8f;
       adjustForItem = true;

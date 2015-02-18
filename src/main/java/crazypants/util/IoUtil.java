@@ -8,7 +8,7 @@ import java.io.InputStream;
 
 import org.apache.commons.io.IOUtils;
 
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 
 public class IoUtil {
 
@@ -33,7 +33,7 @@ public class IoUtil {
   }
   
   public static File getConfigFile(String name) {
-    return new File(Config.configDirectory, name);
+    return new File(Configs.configDirectory, name);
   }
   
   public static String readFileFromClassPath(String fileName) throws IOException {

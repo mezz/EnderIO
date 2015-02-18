@@ -18,7 +18,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import crazypants.enderio.EnderIO;
 import crazypants.enderio.GuiHandler;
 import crazypants.enderio.ModObject;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.AbstractMachineBlock;
 import crazypants.enderio.network.PacketHandler;
 import crazypants.util.FluidUtil;
@@ -140,8 +140,8 @@ public class BlockZombieGenerator extends AbstractMachineBlock<TileZombieGenerat
 
         }
 
-        if(Config.machineSoundsEnabled) {
-          float volume = (Config.machineSoundVolume * 0.045f);
+        if(Configs.machineSoundsEnabled) {
+          float volume = (Configs.machineSoundVolume * 0.045f);
           world.playSound(x + 0.5, y + 1, z + 0.5, EnderIO.MODID + ":generator.zombie.bubble", volume, world.rand.nextFloat() * 0.75f, false);
         }
       }

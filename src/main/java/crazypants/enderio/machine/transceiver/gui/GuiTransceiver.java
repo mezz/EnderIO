@@ -12,7 +12,7 @@ import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.common.Optional;
 
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.gui.IGuiOverlay;
 import crazypants.enderio.gui.ITabPanel;
 import crazypants.enderio.gui.IconEIO;
@@ -40,7 +40,7 @@ public class GuiTransceiver extends GuiPoweredMachineBase<TileTransceiver> {
     tabs.add(new ChannelTab(this, ChannelType.POWER));
     tabs.add(new ChannelTab(this, ChannelType.ITEM));
     tabs.add(new ChannelTab(this, ChannelType.FLUID));  
-    if(Config.enderRailEnabled) {
+    if(Configs.enderRailEnabled) {
       tabs.add(new ChannelTab(this, ChannelType.RAIL));
     }
   }

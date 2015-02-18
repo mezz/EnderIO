@@ -19,7 +19,7 @@ import crazypants.enderio.EnderIO;
 import crazypants.enderio.EnderIOTab;
 import crazypants.enderio.ModObject;
 import crazypants.enderio.conduit.IConduitBundle;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.gui.IAdvancedTooltipProvider;
 import crazypants.enderio.gui.IResourceTooltipProvider;
 import crazypants.enderio.gui.TooltipAddera;
@@ -207,7 +207,7 @@ public class ItemConduitFacade extends Item implements IAdvancedTooltipProvider,
       if(PaintSourceValidator.instance.isWhitelisted(paintSource)) {
         return true;
       }
-      if(!Config.allowTileEntitiesAsPaintSource && block instanceof ITileEntityProvider) {
+      if(!Configs.allowTileEntitiesAsPaintSource && block instanceof ITileEntityProvider) {
         return false;
       }
       if(block == EnderIO.blockFusedQuartz && paintSource.getItemDamage() < 2) {

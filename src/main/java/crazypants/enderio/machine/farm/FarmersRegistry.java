@@ -1,6 +1,6 @@
 package crazypants.enderio.machine.farm;
 
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.farm.farmers.*;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -153,7 +153,7 @@ public final class FarmersRegistry {
     String manaPod = "blockManaPod";
     Block block = GameRegistry.findBlock(mod,manaPod);
     Item item = GameRegistry.findItem(mod,manaBean);
-    if (Config.farmManaBeansEnabled && block!=null && item!=null)
+    if (Configs.farmManaBeansEnabled && block!=null && item!=null)
     {
       FarmersCommune.joinCommune(new ManaBeanFarmer(block, new ItemStack(item)));
     }

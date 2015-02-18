@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.nbt.NBTTagCompound;
 import crazypants.enderio.ModObject;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.AbstractPowerConsumerEntity;
 import crazypants.enderio.machine.IItemBuffer;
 import crazypants.enderio.machine.SlotDefinition;
@@ -106,14 +106,14 @@ public class TileCrafter extends AbstractPowerConsumerEntity implements IItemBuf
     craftingGrid.copyRequiredInputs(required);
     if(hasRequiredInput(required)) {
       craftRecipe();
-      int used = Math.min(getEnergyStored(), Config.crafterRfPerCraft);
+      int used = Math.min(getEnergyStored(), Configs.crafterRfPerCraft);
       setEnergyStored(getEnergyStored() - used);
     }
     return false;
   }
 
   private boolean hasRequiredPower() {
-    return getEnergyStored() >= Config.crafterRfPerCraft;
+    return getEnergyStored() >= Configs.crafterRfPerCraft;
   }
 
   @Override
@@ -123,7 +123,7 @@ public class TileCrafter extends AbstractPowerConsumerEntity implements IItemBuf
   
   public int getPowerUsePerTick(Capacitors type) {
     int ticks = getTicksPerCraft(type);    
-    return (int)Math.ceil(Config.crafterRfPerCraft / (double)ticks);
+    return (int)Math.ceil(Configs.crafterRfPerCraft / (double)ticks);
   }
 
   public int getTicksPerCraft(Capacitors type) {

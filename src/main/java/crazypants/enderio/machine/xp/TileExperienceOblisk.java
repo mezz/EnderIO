@@ -8,7 +8,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 import crazypants.enderio.ModObject;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.AbstractMachineEntity;
 import crazypants.enderio.machine.SlotDefinition;
 import crazypants.enderio.network.PacketHandler;
@@ -20,7 +20,7 @@ import crazypants.util.FluidUtil;
 
 public class TileExperienceOblisk extends AbstractMachineEntity implements IFluidHandler, IHaveExperience {
 
-  private ExperienceContainer xpCont = new ExperienceContainer(XpUtil.getExperienceForLevel(Config.xpObeliskMaxXpLevel));
+  private ExperienceContainer xpCont = new ExperienceContainer(XpUtil.getExperienceForLevel(Configs.xpObeliskMaxXpLevel));
 
   public TileExperienceOblisk() {
     super(new SlotDefinition(0, 0, 0));
@@ -58,14 +58,14 @@ public class TileExperienceOblisk extends AbstractMachineEntity implements IFlui
   @Override
   protected boolean doPull(ForgeDirection dir) {
     boolean res = super.doPull(dir);
-    FluidUtil.doPull(this, dir, Config.fluidConduitMaxIoRate);
+    FluidUtil.doPull(this, dir, Configs.fluidConduitMaxIoRate);
     return res;
   }
   
   @Override
   protected boolean doPush(ForgeDirection dir) {
     boolean res = super.doPush(dir);
-    FluidUtil.doPush(this, dir, Config.fluidConduitMaxIoRate);
+    FluidUtil.doPush(this, dir, Configs.fluidConduitMaxIoRate);
     return res;
   }
 

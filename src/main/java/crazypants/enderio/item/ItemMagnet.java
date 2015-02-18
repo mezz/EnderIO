@@ -17,7 +17,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import crazypants.enderio.EnderIO;
 import crazypants.enderio.EnderIOTab;
 import crazypants.enderio.ModObject;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.gui.IResourceTooltipProvider;
 import crazypants.enderio.machine.power.PowerDisplayUtil;
 import crazypants.util.ItemUtil;
@@ -52,7 +52,7 @@ public class ItemMagnet extends ItemEnergyContainer implements IResourceTooltipP
   }
 
   public static void drainPerSecondPower(ItemStack itemStack) {
-    EnderIO.itemMagnet.extractEnergy(itemStack, Config.magnetPowerUsePerSecondRF, false);    
+    EnderIO.itemMagnet.extractEnergy(itemStack, Configs.magnetPowerUsePerSecondRF, false);    
   }
 
   public static ItemMagnet create() {    
@@ -64,7 +64,7 @@ public class ItemMagnet extends ItemEnergyContainer implements IResourceTooltipP
 
   
   protected ItemMagnet() {
-    super(Config.magnetPowerCapacityRF, Config.magnetPowerCapacityRF/100);
+    super(Configs.magnetPowerCapacityRF, Configs.magnetPowerCapacityRF/100);
     setCreativeTab(EnderIOTab.tabEnderIO);
     setUnlocalizedName(ModObject.itemMagnet.unlocalisedName);    
     setMaxDamage(16);
@@ -140,7 +140,7 @@ public class ItemMagnet extends ItemEnergyContainer implements IResourceTooltipP
   }
 
   void setFull(ItemStack container) {
-    setEnergy(container, Config.magnetPowerCapacityRF);
+    setEnergy(container, Configs.magnetPowerCapacityRF);
   }
 
   private void updateDamage(ItemStack stack) {

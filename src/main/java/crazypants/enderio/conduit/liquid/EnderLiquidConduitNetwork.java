@@ -11,15 +11,15 @@ import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 import crazypants.enderio.conduit.AbstractConduitNetwork;
 import crazypants.enderio.conduit.ConnectionMode;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.util.BlockCoord;
 import crazypants.util.FluidUtil;
 import crazypants.util.RoundRobinIterator;
 
 public class EnderLiquidConduitNetwork extends AbstractConduitNetwork<ILiquidConduit, EnderLiquidConduit> {
 
-  public static final int MAX_EXTRACT_PER_TICK = Config.enderFluidConduitExtractRate;
-  public static final int MAX_IO_PER_TICK = Config.enderFluidConduitMaxIoRate;
+  public static final int MAX_EXTRACT_PER_TICK = Configs.enderFluidConduitExtractRate;
+  public static final int MAX_IO_PER_TICK = Configs.enderFluidConduitMaxIoRate;
 
   List<NetworkTank> tanks = new ArrayList<NetworkTank>();
   Map<NetworkTankKey, NetworkTank> tankMap = new HashMap<NetworkTankKey, NetworkTank>();

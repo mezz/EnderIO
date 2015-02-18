@@ -28,7 +28,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import crazypants.enderio.EnderIOTab;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.gui.IAdvancedTooltipProvider;
 import crazypants.util.ItemUtil;
 import crazypants.util.Lang;
@@ -47,12 +47,12 @@ public class ItemDarkSteelArmor extends ItemArmor implements IEnergyContainerIte
 
   public static final ArmorMaterial MATERIAL = EnumHelper.addArmorMaterial("darkSteel", 35, new int[] { 2, 6, 5, 2 }, 15);
 
-  public static final int[] CAPACITY = new int[] { Config.darkSteelPowerStorageBase, Config.darkSteelPowerStorageBase, Config.darkSteelPowerStorageBase * 2,
-      Config.darkSteelPowerStorageBase * 2 };
+  public static final int[] CAPACITY = new int[] { Configs.darkSteelPowerStorageBase, Configs.darkSteelPowerStorageBase, Configs.darkSteelPowerStorageBase * 2,
+      Configs.darkSteelPowerStorageBase * 2 };
 
-  public static final int[] RF_PER_DAMAGE_POINT = new int[] { Config.darkSteelPowerStorageBase, Config.darkSteelPowerStorageBase,
-      Config.darkSteelPowerStorageBase * 2,
-      Config.darkSteelPowerStorageBase * 2 };
+  public static final int[] RF_PER_DAMAGE_POINT = new int[] { Configs.darkSteelPowerStorageBase, Configs.darkSteelPowerStorageBase,
+      Configs.darkSteelPowerStorageBase * 2,
+      Configs.darkSteelPowerStorageBase * 2 };
 
   public static final String[] NAMES = new String[] { "helmet", "chestplate", "leggings", "boots" };
 
@@ -106,7 +106,7 @@ public class ItemDarkSteelArmor extends ItemArmor implements IEnergyContainerIte
     setUnlocalizedName(str);
     setTextureName("enderIO:" + str);
 
-    powerPerDamagePoint = Config.darkSteelPowerStorageBase / MATERIAL.getDurability(armorType);
+    powerPerDamagePoint = Configs.darkSteelPowerStorageBase / MATERIAL.getDurability(armorType);
   }
 
   protected void init() {
@@ -162,7 +162,7 @@ public class ItemDarkSteelArmor extends ItemArmor implements IEnergyContainerIte
 
   @Override
   public void addDetailedEntries(ItemStack itemstack, EntityPlayer entityplayer, List list, boolean flag) {
-    if(!Config.addDurabilityTootip) {
+    if(!Configs.addDurabilityTootip) {
       list.add(ItemUtil.getDurabilityString(itemstack));
     }
     String str = EnergyUpgrade.getStoredEnergyString(itemstack);

@@ -4,7 +4,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import crazypants.enderio.EnderIO;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 
 public class SwimUpgrade extends AbstractUpgrade {
 
@@ -31,7 +31,7 @@ public class SwimUpgrade extends AbstractUpgrade {
   }
 
   public SwimUpgrade() {
-    super(UPGRADE_NAME, "enderio.darksteel.upgrade.swim", new ItemStack(Blocks.waterlily), Config.darkSteelSwimCost);
+    super(UPGRADE_NAME, "enderio.darksteel.upgrade.swim", new ItemStack(Blocks.waterlily), Configs.darkSteelSwimCost);
   }  
   
   @Override

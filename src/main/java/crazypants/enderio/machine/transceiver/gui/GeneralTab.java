@@ -10,7 +10,7 @@ import net.minecraft.client.gui.GuiButton;
 
 import org.lwjgl.opengl.GL11;
 
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.gui.ITabPanel;
 import crazypants.enderio.gui.IconEIO;
 import crazypants.enderio.gui.ToggleButtonEIO;
@@ -135,7 +135,7 @@ public class GeneralTab implements ITabPanel {
   
   private void updateSendPowerBarTooltip(List<String> text) {
     text.add(Lang.localize("gui.machine.sendReceivebuffer"));
-    text.add(Lang.localize("itemGasConduit.tooltip.maxIo") + " " + PowerDisplayUtil.formatPowerPerTick(Config.transceiverMaxIoRF));
+    text.add(Lang.localize("itemGasConduit.tooltip.maxIo") + " " + PowerDisplayUtil.formatPowerPerTick(Configs.transceiverMaxIoRF));
     int maxEnergy = parent.getTransciever().getCapacitor().getMaxEnergyStored()/2;
     int energyStored = Math.max(0, parent.getTransciever().getEnergyStored() - maxEnergy);
     text.add(PowerDisplayUtil.formatStoredPower(energyStored, maxEnergy));    

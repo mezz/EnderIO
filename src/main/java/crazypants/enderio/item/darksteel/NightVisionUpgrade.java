@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionHelper;
 import crazypants.enderio.EnderIO;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 
 public class NightVisionUpgrade extends AbstractUpgrade {
 
@@ -41,7 +41,7 @@ public class NightVisionUpgrade extends AbstractUpgrade {
   }
 
   public NightVisionUpgrade() {
-    super(UPGRADE_NAME, "enderio.darksteel.upgrade.nightVision", createUpgradeItem(), Config.darkSteelNightVisionCost);
+    super(UPGRADE_NAME, "enderio.darksteel.upgrade.nightVision", createUpgradeItem(), Configs.darkSteelNightVisionCost);
   }  
   
   @Override

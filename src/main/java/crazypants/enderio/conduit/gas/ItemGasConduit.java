@@ -10,7 +10,7 @@ import crazypants.enderio.ModObject;
 import crazypants.enderio.conduit.AbstractItemConduit;
 import crazypants.enderio.conduit.IConduit;
 import crazypants.enderio.conduit.ItemConduitSubtype;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.gui.IAdvancedTooltipProvider;
 import crazypants.enderio.gui.TooltipAddera;
 import crazypants.util.Lang;
@@ -59,8 +59,8 @@ public class ItemGasConduit extends AbstractItemConduit implements IAdvancedTool
   @SideOnly(Side.CLIENT)
   public void addDetailedEntries(ItemStack itemstack, EntityPlayer entityplayer, List list, boolean flag) {
     String gpt = " " + Lang.localize("gas.gasTick");
-    int extractRate = Config.gasConduitExtractRate;
-    int maxIo = Config.gasConduitMaxIoRate;
+    int extractRate = Configs.gasConduitExtractRate;
+    int maxIo = Configs.gasConduitMaxIoRate;
     list.add(Lang.localize("itemGasConduit.tooltip.maxExtract") + " " + extractRate + gpt);
     list.add(Lang.localize("itemGasConduit.tooltip.maxIo") + " " + maxIo + gpt);
     TooltipAddera.addDetailedTooltipFromResources(list, "enderio.itemGasConduit");

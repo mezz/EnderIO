@@ -9,7 +9,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import crazypants.enderio.ModObject;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.IMachineRecipe;
 import crazypants.enderio.machine.MachineRecipeInput;
 import crazypants.enderio.machine.recipe.RecipeBonusType;
@@ -17,7 +17,7 @@ import crazypants.util.Util;
 
 public abstract class BasicPainterTemplate implements IMachineRecipe {
 
-  public static int DEFAULT_ENERGY_PER_TASK = Config.painterEnergyPerTaskRF;
+  public static int DEFAULT_ENERGY_PER_TASK = Configs.painterEnergyPerTaskRF;
 
   protected final Block[] validTargets;
 

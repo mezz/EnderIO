@@ -13,7 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.farm.TileFarmStation;
 import crazypants.util.BlockCoord;
 
@@ -124,7 +124,7 @@ public class TreeFarmer implements IFarmerJoe {
       }
       boolean isWood = true;
       if(!isWood(blk)) { //leaves
-        isWood = Config.farmAxeDamageOnLeafBreak;
+        isWood = Configs.farmAxeDamageOnLeafBreak;
         int leaveMeta = farm.getBlockMeta(coord);
         if(TreeHarvestUtil.canDropApples(blk, leaveMeta)) {
           if(farm.getWorldObj().rand.nextInt(200) == 0) {

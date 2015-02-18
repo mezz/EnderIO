@@ -1,6 +1,6 @@
 package crazypants.enderio.item.darksteel;
 
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.vecmath.Vector3d;
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
@@ -9,7 +9,7 @@ import net.minecraft.world.World;
 
 public class SoundEntity extends Entity {
 
-  int lifeSpan = Config.darkSteelSoundLocatorLifespan;
+  int lifeSpan = Configs.darkSteelSoundLocatorLifespan;
   float volume;
 
   public SoundEntity(World world, Vector3d pos, float volume) {

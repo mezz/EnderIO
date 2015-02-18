@@ -5,29 +5,29 @@ import java.util.List;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.MathHelper;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 
 public class CapBankType {
 
-  public static final CapBankType CREATIVE = new CapBankType("CREATIVE", "tile.blockCapBank.creative", 500000, Config.capacitorBankTierTwoMaxStorageRF, false,
+  public static final CapBankType CREATIVE = new CapBankType("CREATIVE", "tile.blockCapBank.creative", 500000, Configs.capacitorBankTierTwoMaxStorageRF, false,
       true,
       "enderio:capacitorBank", "enderio:capacitorBankCreativeBorder", "enderio:capacitorBankInput", "enderio:capacitorBankOutput",
       "enderio:capacitorBankLocked");
 
-  public static final CapBankType SIMPLE = new CapBankType("SIMPLE", "tile.blockCapBank.simple", Config.capacitorBankTierOneMaxIoRF,
-      Config.capacitorBankTierOneMaxStorageRF,
+  public static final CapBankType SIMPLE = new CapBankType("SIMPLE", "tile.blockCapBank.simple", Configs.capacitorBankTierOneMaxIoRF,
+      Configs.capacitorBankTierOneMaxStorageRF,
       true,
       false, "enderio:capacitorBank", "enderio:capacitorBankSimpleBorder", "enderio:capacitorBankInput", "enderio:capacitorBankOutput",
       "enderio:capacitorBankLocked");
 
-  public static final CapBankType ACTIVATED = new CapBankType("ACTIVATED", "tile.blockCapBank.activated", Config.capacitorBankTierTwoMaxIoRF,
-      Config.capacitorBankTierTwoMaxStorageRF,
+  public static final CapBankType ACTIVATED = new CapBankType("ACTIVATED", "tile.blockCapBank.activated", Configs.capacitorBankTierTwoMaxIoRF,
+      Configs.capacitorBankTierTwoMaxStorageRF,
       true,
       false, "enderio:capacitorBank", "enderio:capacitorBankActivatedBorder", "enderio:capacitorBankInput", "enderio:capacitorBankOutput",
       "enderio:capacitorBankLocked");
 
-  public static final CapBankType VIBRANT = new CapBankType("VIBRANT", "tile.blockCapBank.vibrant", Config.capacitorBankTierThreeMaxIoRF,
-      Config.capacitorBankTierThreeMaxStorageRF,
+  public static final CapBankType VIBRANT = new CapBankType("VIBRANT", "tile.blockCapBank.vibrant", Configs.capacitorBankTierThreeMaxIoRF,
+      Configs.capacitorBankTierThreeMaxStorageRF,
       true, false, "enderio:capacitorBank", "enderio:capacitorBankVibrantBorder", "enderio:capacitorBankInput", "enderio:capacitorBankOutput",
       "enderio:capacitorBankLocked");
 

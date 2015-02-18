@@ -23,7 +23,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import crazypants.enderio.BlockEio;
 import crazypants.enderio.EnderIO;
 import crazypants.enderio.ModObject;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.painter.PainterUtil;
 import crazypants.enderio.machine.painter.TileEntityPaintedBlock;
 import crazypants.util.BlockCoord;
@@ -35,9 +35,9 @@ public class BlockFusedQuartz extends BlockEio {
   public enum Type {
 
     FUSED_QUARTZ("fusedQuartz", "enderio:fusedQuartz", "enderio:fusedQuartzFrame", "enderio:fusedQuartzItem"),
-    GLASS("fusedGlass", "enderio:fusedGlass", Config.clearGlassSameTexture ? "enderio:fusedQuartzFrame" : "enderio:fusedGlassFrame", "enderio:fusedGlassItem"),
+    GLASS("fusedGlass", "enderio:fusedGlass", Configs.clearGlassSameTexture ? "enderio:fusedQuartzFrame" : "enderio:fusedGlassFrame", "enderio:fusedGlassItem"),
     ENLIGHTENED_FUSED_QUARTZ("enlightenedFusedQuartz", "enderio:fusedQuartz", "enderio:fusedQuartzFrame", "enderio:fusedQuartzItem"),
-    ENLIGHTENED_GLASS("enlightenedFusedGlass", "enderio:fusedGlass", Config.clearGlassSameTexture ? "enderio:fusedQuartzFrame" : "enderio:fusedGlassFrame",
+    ENLIGHTENED_GLASS("enlightenedFusedGlass", "enderio:fusedGlass", Configs.clearGlassSameTexture ? "enderio:fusedQuartzFrame" : "enderio:fusedGlassFrame",
         "enderio:fusedGlassItem");
 
     final String unlocalisedName;
@@ -53,7 +53,7 @@ public class BlockFusedQuartz extends BlockEio {
     }
 
     public boolean connectTo(int otherMeta) {
-      if(otherMeta == ordinal() || Config.clearGlassConnectToFusedQuartz) {
+      if(otherMeta == ordinal() || Configs.clearGlassConnectToFusedQuartz) {
         return true;
       }
 

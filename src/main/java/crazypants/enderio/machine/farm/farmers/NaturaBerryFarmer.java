@@ -6,7 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.ForgeDirection;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.farm.TileFarmStation;
 import crazypants.util.BlockCoord;
 
@@ -58,7 +58,7 @@ public class NaturaBerryFarmer extends PickableFarmer {
 
   @Override
   public boolean canHarvest(TileFarmStation farm, BlockCoord bc, Block block, int meta) {
-    if(!Config.farmEssenceBerriesEnabled && "tile.ore.berries.two".equals(block.getUnlocalizedName()) && meta == grownBlockMeta) {
+    if(!Configs.farmEssenceBerriesEnabled && "tile.ore.berries.two".equals(block.getUnlocalizedName()) && meta == grownBlockMeta) {
       return false;
     }
 

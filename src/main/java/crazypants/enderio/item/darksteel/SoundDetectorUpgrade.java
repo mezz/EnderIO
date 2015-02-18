@@ -4,7 +4,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import crazypants.enderio.EnderIO;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 
 public class SoundDetectorUpgrade extends AbstractUpgrade {
 
@@ -31,7 +31,7 @@ public class SoundDetectorUpgrade extends AbstractUpgrade {
   }
 
   public SoundDetectorUpgrade() {
-    super(UPGRADE_NAME, "enderio.darksteel.upgrade.sound", new ItemStack(Blocks.noteblock), Config.darkSteelSoundLocatorCost);
+    super(UPGRADE_NAME, "enderio.darksteel.upgrade.sound", new ItemStack(Blocks.noteblock), Configs.darkSteelSoundLocatorCost);
   }  
   
   @Override

@@ -28,7 +28,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import crazypants.enderio.EnderIOTab;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.gui.IAdvancedTooltipProvider;
 import crazypants.enderio.machine.farm.farmers.HarvestResult;
 import crazypants.enderio.machine.farm.farmers.TreeHarvestUtil;
@@ -114,7 +114,7 @@ public class ItemDarkSteelAxe extends ItemAxe implements IEnergyContainerItem, I
       harvestComparator.refPoint = bc;
       Collections.sort(sortedTargets, harvestComparator);
             
-      int maxBlocks = powerStored / Config.darkSteelAxePowerUsePerDamagePointMultiHarvest;  
+      int maxBlocks = powerStored / Configs.darkSteelAxePowerUsePerDamagePointMultiHarvest;  
       int numUsedPower = 0;
       for(int i=0;numUsedPower<maxBlocks && i < sortedTargets.size();i++) {        
         if(doMultiHarvest(evt.getPlayer(), evt.getPlayer().worldObj, sortedTargets.get(i), evt.block, evt.blockMetadata % 4)) {
@@ -151,8 +151,8 @@ public class ItemDarkSteelAxe extends ItemAxe implements IEnergyContainerItem, I
 
   @SubscribeEvent
   public void onBreakSpeedEvent(PlayerEvent.BreakSpeed evt) {
-    if(evt.entityPlayer.isSneaking() && isEquippedAndPowered(evt.entityPlayer, Config.darkSteelAxePowerUsePerDamagePointMultiHarvest) && isLog(evt.block, evt.metadata)) {
-      evt.newSpeed = evt.originalSpeed / Config.darkSteelAxeSpeedPenaltyMultiHarvest;
+    if(evt.entityPlayer.isSneaking() && isEquippedAndPowered(evt.entityPlayer, Configs.darkSteelAxePowerUsePerDamagePointMultiHarvest) && isLog(evt.block, evt.metadata)) {
+      evt.newSpeed = evt.originalSpeed / Configs.darkSteelAxeSpeedPenaltyMultiHarvest;
     }
     if(isEquipped(evt.entityPlayer) && evt.block.getMaterial() == Material.leaves) {
       evt.newSpeed = 6;
@@ -185,7 +185,7 @@ public class ItemDarkSteelAxe extends ItemAxe implements IEnergyContainerItem, I
 
     EnergyUpgrade eu = EnergyUpgrade.loadFromItem(stack);
     if(eu != null && eu.isAbsorbDamageWithPower(stack) && eu.getEnergy() > 0) {
-      int powerUse = isMultiharvest ? Config.darkSteelAxePowerUsePerDamagePointMultiHarvest : Config.darkSteelAxePowerUsePerDamagePoint;
+      int powerUse = isMultiharvest ? Configs.darkSteelAxePowerUsePerDamagePointMultiHarvest : Configs.darkSteelAxePowerUsePerDamagePoint;
       eu.extractEnergy(damage * powerUse, false);
     } else {
       damage = stack.getItemDamage() + damage;
@@ -202,8 +202,8 @@ public class ItemDarkSteelAxe extends ItemAxe implements IEnergyContainerItem, I
   @Override
   public float getDigSpeed(ItemStack stack, Block block, int meta) {
     if(ForgeHooks.isToolEffective(stack, block, meta)) {
-      if(Config.darkSteelPickPowerUsePerDamagePoint <= 0 || getEnergyStored(stack) > 0) {
-        return ItemDarkSteelSword.MATERIAL.getEfficiencyOnProperMaterial() + Config.darkSteelAxeEffeciencyBoostWhenPowered;
+      if(Configs.darkSteelPickPowerUsePerDamagePoint <= 0 || getEnergyStored(stack) > 0) {
+        return ItemDarkSteelSword.MATERIAL.getEfficiencyOnProperMaterial() + Configs.darkSteelAxeEffeciencyBoostWhenPowered;
       }
       return ItemDarkSteelSword.MATERIAL.getEfficiencyOnProperMaterial();
     }
@@ -262,7 +262,7 @@ public class ItemDarkSteelAxe extends ItemAxe implements IEnergyContainerItem, I
 
   @Override
   public void addDetailedEntries(ItemStack itemstack, EntityPlayer entityplayer, List list, boolean flag) {
-    if(!Config.addDurabilityTootip) {
+    if(!Configs.addDurabilityTootip) {
       list.add(ItemUtil.getDurabilityString(itemstack));
     }
     String str = EnergyUpgrade.getStoredEnergyString(itemstack);
@@ -271,7 +271,7 @@ public class ItemDarkSteelAxe extends ItemAxe implements IEnergyContainerItem, I
     }
     if(EnergyUpgrade.itemHasAnyPowerUpgrade(itemstack)) {
       list.add(Lang.localize("item.darkSteel_axe.tooltip.multiHarvest"));
-      list.add(EnumChatFormatting.WHITE + "+" + Config.darkSteelAxeEffeciencyBoostWhenPowered + " "
+      list.add(EnumChatFormatting.WHITE + "+" + Configs.darkSteelAxeEffeciencyBoostWhenPowered + " "
           + Lang.localize("item.darkSteel_pickaxe.tooltip.effPowered"));
     }
     DarkSteelRecipeManager.instance.addAdvancedTooltipEntries(itemstack, entityplayer, list, flag);

@@ -19,14 +19,14 @@ import net.minecraft.item.ItemStack;
 import org.apache.commons.io.IOUtils;
 
 import crazypants.enderio.Log;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 
 public class RecipeConfig {
 
   //---------------------------------------------- Loading ------------
 
   public static RecipeConfig loadRecipeConfig(String coreFileName, String customFileName, CustomTagHandler customHandler) {
-    File coreFile = new File(Config.configDirectory, coreFileName);
+    File coreFile = new File(Configs.configDirectory, coreFileName);
 
     String defaultVals = null;
     try {
@@ -50,7 +50,7 @@ public class RecipeConfig {
       return null;
     }
 
-    File userFile = new File(Config.configDirectory, customFileName);
+    File userFile = new File(Configs.configDirectory, customFileName);
     String userConfigStr = null;
     try {
       userConfigStr = readRecipes(userFile, customFileName, false);

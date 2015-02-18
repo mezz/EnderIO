@@ -17,7 +17,7 @@ import crazypants.enderio.conduit.ConduitNetworkTickHandler;
 import crazypants.enderio.conduit.ConduitNetworkTickHandler.TickListener;
 import crazypants.enderio.conduit.ConnectionMode;
 import crazypants.enderio.conduit.power.PowerConduitNetwork.ReceptorEntry;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.power.IPowerInterface;
 import crazypants.enderio.power.IPowerStorage;
 
@@ -194,7 +194,7 @@ public class NetworkPowerManager {
 
   private void trackerStartTick() {
 
-    if(!Config.detailedPowerTrackingEnabled) {
+    if(!Configs.detailedPowerTrackingEnabled) {
       return;
     }
     for (IPowerConduit con : network.getConduits()) {
@@ -209,7 +209,7 @@ public class NetworkPowerManager {
     if(!fromBank) {
       networkPowerTracker.powerSent(sent);
     }
-    if(!Config.detailedPowerTrackingEnabled) {
+    if(!Configs.detailedPowerTrackingEnabled) {
       return;
     }
     getOrCreateTracker(con).powerSent(sent);
@@ -219,14 +219,14 @@ public class NetworkPowerManager {
     if(!fromBank) {
       networkPowerTracker.powerRecieved(recieved);
     }
-    if(!Config.detailedPowerTrackingEnabled) {
+    if(!Configs.detailedPowerTrackingEnabled) {
       return;
     }
     getOrCreateTracker(con).powerRecieved(recieved);
   }
 
   private void trackerEndTick() {
-    if(!Config.detailedPowerTrackingEnabled) {
+    if(!Configs.detailedPowerTrackingEnabled) {
       return;
     }
     for (IPowerConduit con : network.getConduits()) {

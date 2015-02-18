@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
 import crazypants.enderio.EnderIO;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 
 public class JumpUpgrade extends AbstractUpgrade {
 
@@ -14,9 +14,9 @@ public class JumpUpgrade extends AbstractUpgrade {
 
   private static String UPGRADE_NAME = "jumpBoost";
 
-  public static JumpUpgrade JUMP_ONE = new JumpUpgrade("enderio.darksteel.upgrade.jump_one", 1, Config.darkSteelJumpOneCost);
-  public static JumpUpgrade JUMP_TWO = new JumpUpgrade("enderio.darksteel.upgrade.jump_two", 2, Config.darkSteelJumpTwoCost);
-  public static JumpUpgrade JUMP_THREE = new JumpUpgrade("enderio.darksteel.upgrade.jump_three", 3, Config.darkSteelJumpThreeCost);
+  public static JumpUpgrade JUMP_ONE = new JumpUpgrade("enderio.darksteel.upgrade.jump_one", 1, Configs.darkSteelJumpOneCost);
+  public static JumpUpgrade JUMP_TWO = new JumpUpgrade("enderio.darksteel.upgrade.jump_two", 2, Configs.darkSteelJumpTwoCost);
+  public static JumpUpgrade JUMP_THREE = new JumpUpgrade("enderio.darksteel.upgrade.jump_three", 3, Configs.darkSteelJumpThreeCost);
 
   protected short level;
 

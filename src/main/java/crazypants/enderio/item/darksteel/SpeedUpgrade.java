@@ -7,7 +7,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionHelper;
 import crazypants.enderio.EnderIO;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.material.Material;
 import crazypants.util.Util;
 
@@ -20,20 +20,20 @@ public class SpeedUpgrade extends AbstractUpgrade {
   private static String UPGRADE_NAME = "speedBoost";
 
   public static float[] WALK_MULTIPLIERS = new float[] {
-      Config.darkSteelSpeedOneWalkModifier,
-      Config.darkSteelSpeedTwoWalkMultiplier,
-      Config.darkSteelSpeedThreeWalkMultiplier
+      Configs.darkSteelSpeedOneWalkModifier,
+      Configs.darkSteelSpeedTwoWalkMultiplier,
+      Configs.darkSteelSpeedThreeWalkMultiplier
   };
 
   public static float[] SPRINT_MULTIPLIERS = new float[] {
-      Config.darkSteelSpeedOneSprintModifier,
-      Config.darkSteelSpeedTwoSprintMultiplier,
-      Config.darkSteelSpeedThreeSprintMultiplier
+      Configs.darkSteelSpeedOneSprintModifier,
+      Configs.darkSteelSpeedTwoSprintMultiplier,
+      Configs.darkSteelSpeedThreeSprintMultiplier
   };
 
-  public static SpeedUpgrade SPEED_ONE = new SpeedUpgrade("enderio.darksteel.upgrade.speed_one", 1, Config.darkSteelSpeedOneCost);
-  public static SpeedUpgrade SPEED_TWO = new SpeedUpgrade("enderio.darksteel.upgrade.speed_two", 2, Config.darkSteelSpeedTwoCost);
-  public static SpeedUpgrade SPEED_THREE = new SpeedUpgrade("enderio.darksteel.upgrade.speed_three", 3, Config.darkSteelSpeedThreeCost);
+  public static SpeedUpgrade SPEED_ONE = new SpeedUpgrade("enderio.darksteel.upgrade.speed_one", 1, Configs.darkSteelSpeedOneCost);
+  public static SpeedUpgrade SPEED_TWO = new SpeedUpgrade("enderio.darksteel.upgrade.speed_two", 2, Configs.darkSteelSpeedTwoCost);
+  public static SpeedUpgrade SPEED_THREE = new SpeedUpgrade("enderio.darksteel.upgrade.speed_three", 3, Configs.darkSteelSpeedThreeCost);
 
   protected short level;
   protected float walkMultiplier;

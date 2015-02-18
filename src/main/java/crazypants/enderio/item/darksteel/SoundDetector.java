@@ -13,7 +13,7 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.util.Util;
 import crazypants.vecmath.Vector3d;
 
@@ -30,7 +30,7 @@ public class SoundDetector {
 
   boolean enabled = false;
 
-  double maxRangeSq = Config.darkSteelSoundLocatorRange * Config.darkSteelSoundLocatorRange;
+  double maxRangeSq = Configs.darkSteelSoundLocatorRange * Configs.darkSteelSoundLocatorRange;
 
   @SubscribeEvent
   public void onSound(PlaySoundAtEntityEvent evt) {

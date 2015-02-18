@@ -23,7 +23,7 @@ import crazypants.enderio.EnderIO;
 import crazypants.enderio.GuiHandler;
 import crazypants.enderio.ModObject;
 import crazypants.enderio.TileEntityEio;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.gui.IResourceTooltipProvider;
 import crazypants.enderio.machine.MachineRecipeInput;
 import crazypants.enderio.machine.MachineRecipeRegistry;
@@ -66,7 +66,7 @@ public class BlockTravelAnchor extends BlockEio implements IGuiHandler, ITileEnt
 
   private BlockTravelAnchor() {
     super(ModObject.blockTravelAnchor.unlocalisedName, TileTravelAnchor.class);
-    if(!Config.travelAnchorEnabled) {
+    if(!Configs.travelAnchorEnabled) {
       setCreativeTab(null);
     }
   }

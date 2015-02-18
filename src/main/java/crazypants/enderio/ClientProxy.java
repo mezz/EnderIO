@@ -47,7 +47,7 @@ import crazypants.enderio.conduit.render.ConduitBundleRenderer;
 import crazypants.enderio.conduit.render.ConduitRenderer;
 import crazypants.enderio.conduit.render.DefaultConduitRenderer;
 import crazypants.enderio.conduit.render.ItemConduitRenderer;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.enderface.EnderIoRenderer;
 import crazypants.enderio.enderface.TileEnderIO;
 import crazypants.enderio.gui.TooltipAddera;
@@ -260,7 +260,7 @@ public class ClientProxy extends CommonProxy {
     ClientRegistry.bindTileEntitySpecialRenderer(TileWeatherObelisk.class, twr);
     MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(EnderIO.blockWeatherObelisk), twr);
     
-    if(Config.useCombustionGenModel) {
+    if(Configs.useCombustionGenModel) {
       CombustionGeneratorModelRenderer cgmr = new CombustionGeneratorModelRenderer();
       ClientRegistry.bindTileEntitySpecialRenderer(TileCombustionGenerator.class, cgmr);
       MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(EnderIO.blockCombustionGenerator), cgmr);
@@ -268,7 +268,7 @@ public class ClientProxy extends CommonProxy {
       BlockCombustionGenerator.renderId = RenderingRegistry.getNextAvailableRenderId();
       CombustionGeneratorRenderer cr = new CombustionGeneratorRenderer();
       RenderingRegistry.registerBlockHandler(cr);
-      if(!Config.combustionGeneratorUseOpaqueModel) {
+      if(!Configs.combustionGeneratorUseOpaqueModel) {
         ClientRegistry.bindTileEntitySpecialRenderer(TileCombustionGenerator.class, cr);
       }
     }
@@ -344,7 +344,7 @@ public class ClientProxy extends CommonProxy {
     MinecraftForgeClient.registerItemRenderer(EnderIO.itemMachinePart, new MachinePartRenderer());
     MinecraftForgeClient.registerItemRenderer(EnderIO.itemConduitFacade, new FacadeRenderer());
 
-    cbr = new ConduitBundleRenderer((float) Config.conduitScale);
+    cbr = new ConduitBundleRenderer((float) Configs.conduitScale);
     BlockConduitBundle.rendererId = RenderingRegistry.getNextAvailableRenderId();
     RenderingRegistry.registerBlockHandler(cbr);
     ClientRegistry.bindTileEntitySpecialRenderer(TileConduitBundle.class, cbr);
@@ -377,7 +377,7 @@ public class ClientProxy extends CommonProxy {
     ClientRegistry.bindTileEntitySpecialRenderer(TileHyperCube.class, hcr);
     MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(EnderIO.blockHyperCube), hcr);
 
-    if(Config.transceiverEnabled) {
+    if(Configs.transceiverEnabled) {
       TransceiverRenderer tr = new TransceiverRenderer();
       ClientRegistry.bindTileEntitySpecialRenderer(TileTransceiver.class, tr);
       MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(EnderIO.blockTransceiver), tr);
@@ -385,7 +385,7 @@ public class ClientProxy extends CommonProxy {
 
     new YetaWrenchOverlayRenderer();
     new ConduitProbeOverlayRenderer();
-    if(Config.useSneakMouseWheelYetaWrench) {
+    if(Configs.useSneakMouseWheelYetaWrench) {
       ToolTickHandler th = new ToolTickHandler();
       MinecraftForge.EVENT_BUS.register(th);
       FMLCommonHandler.instance().bus().register(th);

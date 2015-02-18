@@ -10,7 +10,7 @@ import net.minecraft.item.ItemBlockWithMetadata;
 import net.minecraft.item.ItemStack;
 import crazypants.enderio.EnderIO;
 import crazypants.enderio.EnderIOTab;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.gui.IAdvancedTooltipProvider;
 import crazypants.enderio.gui.IResourceTooltipProvider;
 import crazypants.enderio.gui.TooltipAddera;
@@ -65,9 +65,9 @@ public class BlockItemSolarPanel extends ItemBlockWithMetadata implements IAdvan
   @Override
   public void addDetailedEntries(ItemStack itemstack, EntityPlayer entityplayer, List list, boolean flag) {
     TooltipAddera.addDetailedTooltipFromResources(list, itemstack); 
-    int prod = Config.maxPhotovoltaicOutputRF;
+    int prod = Configs.maxPhotovoltaicOutputRF;
     if(itemstack.getItemDamage() == 1) {
-      prod = Config.maxPhotovoltaicAdvancedOutputRF;
+      prod = Configs.maxPhotovoltaicAdvancedOutputRF;
     }
     list.add(Lang.localize("maxSolorProduction") + " " + PowerDisplayUtil.formatPowerPerTick(prod));
   }

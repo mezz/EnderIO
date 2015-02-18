@@ -17,7 +17,7 @@ import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import crazypants.enderio.EnderIO;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.AbstractMachineBlock;
 import crazypants.enderio.machine.IoMode;
 import crazypants.render.BoundingBox;
@@ -102,7 +102,7 @@ public class CombustionGeneratorRenderer extends TileEntitySpecialRenderer imple
     bb = bb.translate(tx, 0, tz);
 
     IIcon tex;
-    if(Config.combustionGeneratorUseOpaqueModel) {
+    if(Configs.combustionGeneratorUseOpaqueModel) {
       tex = EnderIO.blockCombustionGenerator.getIcon(4,0);
     } else {
       tex = EnderIO.blockFusedQuartz.getDefaultFrameIcon(0);

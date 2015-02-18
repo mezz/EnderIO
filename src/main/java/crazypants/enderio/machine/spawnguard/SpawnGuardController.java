@@ -12,7 +12,7 @@ import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.wireless.IWirelessCharger;
 import crazypants.enderio.machine.wireless.WirelessChargerController;
 import crazypants.util.BlockCoord;
@@ -49,11 +49,11 @@ public class SpawnGuardController {
   @SubscribeEvent
   public void onEntitySpawn(LivingSpawnEvent evt) {
     
-    if(Config.spawnGuardStopAllSlimesDebug && evt.entity instanceof EntitySlime) {
+    if(Configs.spawnGuardStopAllSlimesDebug && evt.entity instanceof EntitySlime) {
       evt.setResult(Result.DENY);
       return;
     }
-    if(Config.spawnGuardStopAllSquidSpawning && evt.entity.getClass() == EntitySquid.class) {
+    if(Configs.spawnGuardStopAllSquidSpawning && evt.entity.getClass() == EntitySquid.class) {
       evt.setResult(Result.DENY);
       return;
     }

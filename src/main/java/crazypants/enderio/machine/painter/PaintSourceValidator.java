@@ -7,7 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.recipe.RecipeInput;
 import crazypants.util.ItemUtil;
 import crazypants.util.Util;
@@ -34,7 +34,7 @@ public class PaintSourceValidator {
     if(isWhitelisted(paintSource)) {
       return true;
     }
-    if(!Config.allowTileEntitiesAsPaintSource && block instanceof ITileEntityProvider) {
+    if(!Configs.allowTileEntitiesAsPaintSource && block instanceof ITileEntityProvider) {
       return false;
     }
 

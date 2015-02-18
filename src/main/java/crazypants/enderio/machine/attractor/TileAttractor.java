@@ -33,7 +33,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import crazypants.enderio.EnderIO;
 import crazypants.enderio.ModObject;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.AbstractPowerConsumerEntity;
 import crazypants.enderio.machine.SlotDefinition;
 import crazypants.enderio.machine.ranged.IRanged;
@@ -106,17 +106,17 @@ public class TileAttractor extends AbstractPowerConsumerEntity implements IRange
   private void setUpdrade(Capacitors capacitorType) {
     switch (capacitorType) {
     case ACTIVATED_CAPACITOR:
-      range = Config.attractorRangeLevelTwo;
-      powerPerTick = Config.attractorPowerPerTickLevelTwo;
+      range = Configs.attractorRangeLevelTwo;
+      powerPerTick = Configs.attractorPowerPerTickLevelTwo;
       break;
     case ENDER_CAPACITOR:
-      range = Config.attractorRangeLevelThree;
-      powerPerTick = Config.attractorPowerPerTickLevelThree;
+      range = Configs.attractorRangeLevelThree;
+      powerPerTick = Configs.attractorPowerPerTickLevelThree;
       break;
     case BASIC_CAPACITOR:
     default:
-      range = Config.attractorRangeLevelOne;
-      powerPerTick = Config.attractorPowerPerTickLevelOne;
+      range = Configs.attractorRangeLevelOne;
+      powerPerTick = Configs.attractorPowerPerTickLevelOne;
       break;
     }
     rangeSqu = range * range;

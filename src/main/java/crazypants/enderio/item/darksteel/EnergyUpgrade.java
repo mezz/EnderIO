@@ -11,7 +11,7 @@ import net.minecraft.util.EnumChatFormatting;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import crazypants.enderio.EnderIO;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.gui.TooltipAddera;
 import crazypants.enderio.machine.power.PowerDisplayUtil;
 import crazypants.enderio.material.Material;
@@ -20,28 +20,28 @@ import crazypants.util.Lang;
 public class EnergyUpgrade extends AbstractUpgrade {
 
   public static final AbstractUpgrade EMPOWERED = new EnergyUpgrade(
-      "enderio.darksteel.upgrade.empowered_one", Config.darkSteelUpgradeVibrantCost,
+      "enderio.darksteel.upgrade.empowered_one", Configs.darkSteelUpgradeVibrantCost,
       new ItemStack(EnderIO.itemMaterial, 1, Material.VIBRANT_CYSTAL.ordinal()),
-      Config.darkSteelPowerStorageBase,
-      Config.darkSteelPowerStorageBase / 100);
+      Configs.darkSteelPowerStorageBase,
+      Configs.darkSteelPowerStorageBase / 100);
 
   public static final AbstractUpgrade EMPOWERED_TWO = new EnergyUpgrade(
-      "enderio.darksteel.upgrade.empowered_two", Config.darkSteelUpgradePowerOneCost,
+      "enderio.darksteel.upgrade.empowered_two", Configs.darkSteelUpgradePowerOneCost,
       new ItemStack(EnderIO.itemBasicCapacitor, 1, 0),
-      Config.darkSteelPowerStorageLevelOne,
-      Config.darkSteelPowerStorageLevelOne / 100);
+      Configs.darkSteelPowerStorageLevelOne,
+      Configs.darkSteelPowerStorageLevelOne / 100);
 
   public static final AbstractUpgrade EMPOWERED_THREE = new EnergyUpgrade(
-      "enderio.darksteel.upgrade.empowered_three", Config.darkSteelUpgradePowerTwoCost,
+      "enderio.darksteel.upgrade.empowered_three", Configs.darkSteelUpgradePowerTwoCost,
       new ItemStack(EnderIO.itemBasicCapacitor, 1, 1),
-      Config.darkSteelPowerStorageLevelTwo,
-      Config.darkSteelPowerStorageLevelTwo / 100);
+      Configs.darkSteelPowerStorageLevelTwo,
+      Configs.darkSteelPowerStorageLevelTwo / 100);
 
   public static final AbstractUpgrade EMPOWERED_FOUR = new EnergyUpgrade(
-      "enderio.darksteel.upgrade.empowered_four", Config.darkSteelUpgradePowerThreeCost,
+      "enderio.darksteel.upgrade.empowered_four", Configs.darkSteelUpgradePowerThreeCost,
       new ItemStack(EnderIO.itemBasicCapacitor, 1, 2),
-      Config.darkSteelPowerStorageLevelThree,
-      Config.darkSteelPowerStorageLevelThree / 100);
+      Configs.darkSteelPowerStorageLevelThree,
+      Configs.darkSteelPowerStorageLevelThree / 100);
 
   private static final String UPGRADE_NAME = "energyUpgrade";
   private static final String KEY_CAPACITY = "capacity";
@@ -240,7 +240,7 @@ public class EnergyUpgrade extends AbstractUpgrade {
     } else if (upgrade.unlocName.equals(EMPOWERED_FOUR.unlocName)) {
       index = 3;
     }
-    return Config.darkSteelPowerDamgeAbsorptionRatios[index];
+    return Configs.darkSteelPowerDamgeAbsorptionRatios[index];
   }
 
   public int getEnergy() {

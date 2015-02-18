@@ -23,7 +23,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.util.ForgeDirection;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.transceiver.TileTransceiver;
 import crazypants.util.BlockCoord;
 import crazypants.util.EntityUtil;
@@ -83,7 +83,7 @@ public class EnderRailController {
 
   private void spawnRecievedCart() {
 
-    if(Config.enderRailTeleportPlayers) {
+    if(Configs.enderRailTeleportPlayers) {
       ListIterator<PlayerTpInfo> li = playersToRemount.listIterator();
       while (li.hasNext()) {
         PlayerTpInfo tpi = li.next();
@@ -100,7 +100,7 @@ public class EnderRailController {
     boolean failedSpawn = false;
     if(!isClear()) {
       ticksFailedToSpawn++;
-      if(ticksFailedToSpawn < Config.enderRailTicksBeforeForceSpawningLinkedCarts) {
+      if(ticksFailedToSpawn < Configs.enderRailTicksBeforeForceSpawningLinkedCarts) {
         return;
       }
       failedSpawn = true;

@@ -10,7 +10,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 import crazypants.enderio.ModObject;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.AbstractPoweredTaskEntity;
 import crazypants.enderio.machine.IMachineRecipe;
 import crazypants.enderio.machine.MachineRecipeInput;
@@ -28,21 +28,21 @@ import crazypants.util.FluidUtil;
 
 public class TileSoulBinder extends AbstractPoweredTaskEntity implements IHaveExperience, IFluidHandler {
 
-  public static final int POWER_PER_TICK_ONE = Config.soulBinderLevelOnePowerPerTickRF;
+  public static final int POWER_PER_TICK_ONE = Configs.soulBinderLevelOnePowerPerTickRF;
   private static final BasicCapacitor CAP_ONE = new BasicCapacitor(POWER_PER_TICK_ONE * 2, 
       Capacitors.BASIC_CAPACITOR.capacitor.getMaxEnergyStored(), POWER_PER_TICK_ONE);
 
-  public static final int POWER_PER_TICK_TWO = Config.soulBinderLevelTwoPowerPerTickRF;
+  public static final int POWER_PER_TICK_TWO = Configs.soulBinderLevelTwoPowerPerTickRF;
   private static final BasicCapacitor CAP_TWO = new BasicCapacitor(POWER_PER_TICK_TWO * 2,
       Capacitors.ACTIVATED_CAPACITOR.capacitor.getMaxEnergyStored(), POWER_PER_TICK_TWO);
 
-  public static final int  POWER_PER_TICK_THREE = Config.soulBinderLevelThreePowerPerTickRF;
+  public static final int  POWER_PER_TICK_THREE = Configs.soulBinderLevelThreePowerPerTickRF;
   private static final BasicCapacitor CAP_THREE = new BasicCapacitor(POWER_PER_TICK_THREE * 2,
       Capacitors.ENDER_CAPACITOR.capacitor.getMaxEnergyStored(), POWER_PER_TICK_THREE);
   
   private ICapacitor capacitor;
   
-  private final ExperienceContainer xpCont = new ExperienceContainer(XpUtil.getExperienceForLevel(Config.soulBinderMaxXpLevel));
+  private final ExperienceContainer xpCont = new ExperienceContainer(XpUtil.getExperienceForLevel(Configs.soulBinderMaxXpLevel));
   
   public TileSoulBinder() {
     super(new SlotDefinition(2, 2, 1));
@@ -174,14 +174,14 @@ public class TileSoulBinder extends AbstractPoweredTaskEntity implements IHaveEx
   @Override
   protected boolean doPull(ForgeDirection dir) {
     boolean res = super.doPull(dir);
-    FluidUtil.doPull(this, dir, Config.fluidConduitExtractRate);
+    FluidUtil.doPull(this, dir, Configs.fluidConduitExtractRate);
     return res;
   }
   
   @Override
   protected boolean doPush(ForgeDirection dir) {
     boolean res = super.doPush(dir);
-    FluidUtil.doPush(this, dir, Config.fluidConduitExtractRate);
+    FluidUtil.doPush(this, dir, Configs.fluidConduitExtractRate);
     return res;
   }
 

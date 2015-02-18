@@ -17,7 +17,7 @@ import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 
 import crazypants.enderio.Log;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.recipe.RecipeConfig;
 import crazypants.enderio.machine.recipe.RecipeConfigParser;
 import crazypants.enderio.machine.recipe.RecipeInput;
@@ -28,7 +28,7 @@ public final class OreDictionaryPreferenceParser extends DefaultHandler {
   private static final String CUSTOM_FILE_NAME = "OreDictionaryPreferences_User.xml";
 
   public static void loadConfig() {
-    File coreFile = new File(Config.configDirectory, CORE_FILE_NAME);
+    File coreFile = new File(Configs.configDirectory, CORE_FILE_NAME);
 
     String defaultVals = null;
     try {
@@ -49,7 +49,7 @@ public final class OreDictionaryPreferenceParser extends DefaultHandler {
       Log.error("Could not parse default lists from " + coreFile + ": " + e);
     }
 
-    File userFile = new File(Config.configDirectory, CUSTOM_FILE_NAME);
+    File userFile = new File(Configs.configDirectory, CUSTOM_FILE_NAME);
     String userConfigStr = null;
     try {
       userConfigStr = RecipeConfig.readRecipes(userFile, CUSTOM_FILE_NAME, false);

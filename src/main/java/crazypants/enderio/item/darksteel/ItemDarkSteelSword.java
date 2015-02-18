@@ -31,7 +31,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import crazypants.enderio.EnderIO;
 import crazypants.enderio.EnderIOTab;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.gui.IAdvancedTooltipProvider;
 import crazypants.enderio.teleport.IItemOfTravel;
 import crazypants.enderio.teleport.TravelController;
@@ -44,7 +44,7 @@ public class ItemDarkSteelSword extends ItemSword implements IEnergyContainerIte
 
   private static final String ENDERZOO_ENDERMINY = "enderzoo.Enderminy";
 
-  static final ToolMaterial MATERIAL = EnumHelper.addToolMaterial("darkSteel", Config.darkSteelPickMinesTiCArdite ? 5 : 3, 1561, 7, 2, 25);
+  static final ToolMaterial MATERIAL = EnumHelper.addToolMaterial("darkSteel", Configs.darkSteelPickMinesTiCArdite ? 5 : 3, 1561, 7, 2, 25);
 
   public static boolean isEquipped(EntityPlayer player) {
     if(player == null) {
@@ -71,7 +71,7 @@ public class ItemDarkSteelSword extends ItemSword implements IEnergyContainerIte
     return res;
   }
 
-  private final int powerPerDamagePoint = Config.darkSteelPowerStorageBase / MATERIAL.getMaxUses();
+  private final int powerPerDamagePoint = Configs.darkSteelPowerStorageBase / MATERIAL.getMaxUses();
   private long lastBlickTick = -1;
 
   public ItemDarkSteelSword() {
@@ -130,7 +130,7 @@ public class ItemDarkSteelSword extends ItemSword implements IEnergyContainerIte
 
     double skullDropChance = getSkullDropChance(player, evt);
     if(player instanceof FakePlayer) {
-      skullDropChance *= Config.fakePlayerSkullChance;
+      skullDropChance *= Configs.fakePlayerSkullChance;
     }
     if(Math.random() <= skullDropChance) {
       dropSkull(evt, player);
@@ -141,11 +141,11 @@ public class ItemDarkSteelSword extends ItemSword implements IEnergyContainerIte
       String name = EntityList.getEntityString(evt.entityLiving);
       if(evt.entityLiving instanceof EntityEnderman || ENDERZOO_ENDERMINY.equals(name)) {
         int numPearls = 0;
-        if(Math.random() <= Config.darkSteelSwordEnderPearlDropChance) {
+        if(Math.random() <= Configs.darkSteelSwordEnderPearlDropChance) {
           numPearls++;
         }
         for (int i = 0; i < evt.lootingLevel; i++) {
-          if(Math.random() <= Config.darkSteelSwordEnderPearlDropChancePerLooting) {
+          if(Math.random() <= Configs.darkSteelSwordEnderPearlDropChancePerLooting) {
             numPearls++;
           }
         }
@@ -200,13 +200,13 @@ public class ItemDarkSteelSword extends ItemSword implements IEnergyContainerIte
 
     float fromWeapon;
     if(isCleaver) {
-      fromWeapon = Config.ticCleaverSkullDropChance;
+      fromWeapon = Configs.ticCleaverSkullDropChance;
     } else {
-      fromWeapon = Config.vanillaSwordSkullChance;
+      fromWeapon = Configs.vanillaSwordSkullChance;
     }
     float fromLooting = 0;
     if(hasBeheading) {
-      fromLooting = Config.ticBeheadingSkullModifier * infiToolRoot.getInteger("Beheading");
+      fromLooting = Configs.ticBeheadingSkullModifier * infiToolRoot.getInteger("Beheading");
     }
     float skullDropChance = fromWeapon + fromLooting;
     if(Math.random() <= skullDropChance) {
@@ -217,20 +217,20 @@ public class ItemDarkSteelSword extends ItemSword implements IEnergyContainerIte
 
   private double getSkullDropChance(EntityPlayer player, LivingDropsEvent evt) {
     if(isWitherSkeleton(evt)) {
-      if(isEquippedAndPowered(player, Config.darkSteelSwordPowerUsePerHit)) {
-        return Config.darkSteelSwordWitherSkullChance + (Config.darkSteelSwordWitherSkullLootingModifier * evt.lootingLevel);
+      if(isEquippedAndPowered(player, Configs.darkSteelSwordPowerUsePerHit)) {
+        return Configs.darkSteelSwordWitherSkullChance + (Configs.darkSteelSwordWitherSkullLootingModifier * evt.lootingLevel);
       } else {
         return 0.01;
       }
     }
     float fromWeapon;
     float fromLooting;
-    if(isEquippedAndPowered(player, Config.darkSteelSwordPowerUsePerHit)) {
-      fromWeapon = Config.darkSteelSwordSkullChance;
-      fromLooting = Config.darkSteelSwordSkullLootingModifier * evt.lootingLevel;
+    if(isEquippedAndPowered(player, Configs.darkSteelSwordPowerUsePerHit)) {
+      fromWeapon = Configs.darkSteelSwordSkullChance;
+      fromLooting = Configs.darkSteelSwordSkullLootingModifier * evt.lootingLevel;
     } else {
-      fromWeapon = Config.vanillaSwordSkullChance;
-      fromLooting = Config.vanillaSwordSkullLootingModifier * evt.lootingLevel;
+      fromWeapon = Configs.vanillaSwordSkullChance;
+      fromLooting = Configs.vanillaSwordSkullLootingModifier * evt.lootingLevel;
     }
     return fromWeapon + fromLooting;
   }
@@ -293,8 +293,8 @@ public class ItemDarkSteelSword extends ItemSword implements IEnergyContainerIte
       if(eu != null) {
         eu.writeToItem(sword);
 
-        if(eu.energy > Config.darkSteelSwordPowerUsePerHit) {
-          extractEnergy(player.getCurrentEquippedItem(), Config.darkSteelSwordPowerUsePerHit, false);
+        if(eu.energy > Configs.darkSteelSwordPowerUsePerHit) {
+          extractEnergy(player.getCurrentEquippedItem(), Configs.darkSteelSwordPowerUsePerHit, false);
           String name = EntityList.getEntityString(entity);
           if(entity instanceof EntityEnderman || ENDERZOO_ENDERMINY.equals(name)) {
             entity.getEntityData().setBoolean("hitByDarkSteelSword", true);
@@ -345,7 +345,7 @@ public class ItemDarkSteelSword extends ItemSword implements IEnergyContainerIte
 
   @Override
   public void addDetailedEntries(ItemStack itemstack, EntityPlayer entityplayer, List list, boolean flag) {
-    if(!Config.addDurabilityTootip) {
+    if(!Configs.addDurabilityTootip) {
       list.add(ItemUtil.getDurabilityString(itemstack));
     }
     String str = EnergyUpgrade.getStoredEnergyString(itemstack);
@@ -392,7 +392,7 @@ public class ItemDarkSteelSword extends ItemSword implements IEnergyContainerIte
       if(ticksSinceBlink < 0) {
         lastBlickTick = -1;
       }
-      if(Config.travelStaffBlinkEnabled && world.isRemote && ticksSinceBlink >= Config.travelStaffBlinkPauseTicks) {
+      if(Configs.travelStaffBlinkEnabled && world.isRemote && ticksSinceBlink >= Configs.travelStaffBlinkPauseTicks) {
         if(TravelController.instance.doBlink(stack, player)) {
           player.swingItem();
           lastBlickTick = EnderIO.proxy.getTickCount();

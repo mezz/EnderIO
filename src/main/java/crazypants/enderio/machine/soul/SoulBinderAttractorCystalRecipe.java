@@ -4,7 +4,7 @@ import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import crazypants.enderio.EnderIO;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.material.Material;
 
 public class SoulBinderAttractorCystalRecipe extends AbstractSoulBinderRecipe {
@@ -12,7 +12,7 @@ public class SoulBinderAttractorCystalRecipe extends AbstractSoulBinderRecipe {
   public static SoulBinderAttractorCystalRecipe instance = new SoulBinderAttractorCystalRecipe();
 
   private SoulBinderAttractorCystalRecipe() {
-    super(Config.soulBinderAttractorCystalRF, Config.soulBinderAttractorCystalLevels, "SoulBinderAttractorCystalRecipe", EntityVillager.class);
+    super(Configs.soulBinderAttractorCystalRF, Configs.soulBinderAttractorCystalLevels, "SoulBinderAttractorCystalRecipe", EntityVillager.class);
   }
 
   @Override

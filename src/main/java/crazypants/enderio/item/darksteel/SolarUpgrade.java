@@ -5,7 +5,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionHelper;
 import crazypants.enderio.EnderIO;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 
 public class SolarUpgrade extends AbstractUpgrade {
 
@@ -13,8 +13,8 @@ public class SolarUpgrade extends AbstractUpgrade {
   
   private static final String UPGRADE_NAME = "speedBoost";
   
-  public static final SolarUpgrade SOLAR_ONE = new SolarUpgrade("enderio.darksteel.upgrade.solar_one", (byte) 1, Config.darkSteelSolarOneCost);
-  public static final SolarUpgrade SOLAR_TWO = new SolarUpgrade("enderio.darksteel.upgrade.solar_two", (byte) 2, Config.darkSteelSolarTwoCost);
+  public static final SolarUpgrade SOLAR_ONE = new SolarUpgrade("enderio.darksteel.upgrade.solar_one", (byte) 1, Configs.darkSteelSolarOneCost);
+  public static final SolarUpgrade SOLAR_TWO = new SolarUpgrade("enderio.darksteel.upgrade.solar_two", (byte) 2, Configs.darkSteelSolarTwoCost);
 
   public static SolarUpgrade loadFromItem(ItemStack stack) {
     if(stack == null) {
@@ -84,6 +84,6 @@ public class SolarUpgrade extends AbstractUpgrade {
   }
 
   public int getRFPerSec() {
-    return level == 1 ? Config.darkSteelSolarOneGen : Config.darkSteelSolarTwoGen;
+    return level == 1 ? Configs.darkSteelSolarOneGen : Configs.darkSteelSolarTwoGen;
   }
 }

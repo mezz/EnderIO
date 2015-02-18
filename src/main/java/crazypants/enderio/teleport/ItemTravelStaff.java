@@ -16,7 +16,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import crazypants.enderio.EnderIO;
 import crazypants.enderio.EnderIOTab;
 import crazypants.enderio.ModObject;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.gui.IResourceTooltipProvider;
 import crazypants.enderio.machine.power.PowerDisplayUtil;
 
@@ -38,7 +38,7 @@ public class ItemTravelStaff extends ItemEnergyContainer implements IItemOfTrave
   }
 
   protected ItemTravelStaff() {
-    super(Config.darkSteelPowerStorageLevelTwo, Config.darkSteelPowerStorageLevelTwo / 100, 0);
+    super(Configs.darkSteelPowerStorageLevelTwo, Configs.darkSteelPowerStorageLevelTwo / 100, 0);
     setCreativeTab(EnderIOTab.tabEnderIO);
     setUnlocalizedName(ModObject.itemTravelStaff.name());
     setMaxDamage(16);
@@ -68,7 +68,7 @@ public class ItemTravelStaff extends ItemEnergyContainer implements IItemOfTrave
       if(ticksSinceBlink < 0) {
         lastBlickTick = -1;
       }
-      if(Config.travelStaffBlinkEnabled && world.isRemote && ticksSinceBlink >= Config.travelStaffBlinkPauseTicks) {
+      if(Configs.travelStaffBlinkEnabled && world.isRemote && ticksSinceBlink >= Configs.travelStaffBlinkPauseTicks) {
         if(TravelController.instance.doBlink(equipped, player)) {
           player.swingItem();
           lastBlickTick = EnderIO.proxy.getTickCount();
@@ -126,7 +126,7 @@ public class ItemTravelStaff extends ItemEnergyContainer implements IItemOfTrave
   }
 
   public void setFull(ItemStack container) {
-    setEnergy(container, Config.darkSteelPowerStorageLevelTwo);
+    setEnergy(container, Configs.darkSteelPowerStorageLevelTwo);
   }
 
   private void updateDamage(ItemStack stack) {

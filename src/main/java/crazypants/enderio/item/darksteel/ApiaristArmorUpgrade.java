@@ -1,7 +1,7 @@
 package crazypants.enderio.item.darksteel;
 
 import cpw.mods.fml.common.registry.GameRegistry;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -50,7 +50,7 @@ public class ApiaristArmorUpgrade extends AbstractUpgrade {
   public ApiaristArmorUpgrade(int slot) {
     super(UPGRADE_NAME,
             "enderio.darksteel.upgrade.apiaristArmor.".concat(ItemDarkSteelArmor.NAMES[slot]),
-            getApiaristArmor(slot), Config.darkSteelApiaristArmorCost);
+            getApiaristArmor(slot), Configs.darkSteelApiaristArmorCost);
     this.slot = slot;
   }
 

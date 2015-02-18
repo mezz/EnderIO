@@ -6,7 +6,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import crazypants.enderio.EnderIO;
 import crazypants.enderio.Log;
 import crazypants.enderio.ModObject;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.MachineRecipeRegistry;
 
 public class SoulBinderRecipeManager {
@@ -31,9 +31,9 @@ public class SoulBinderRecipeManager {
     MachineRecipeRegistry.instance.registerRecipe(ModObject.blockSoulBinder.unlocalisedName, SoulBinderAttractorCystalRecipe.instance);
 
     //Ender Rail
-    if(Config.transceiverEnabled && Config.enderRailEnabled) {
+    if(Configs.transceiverEnabled && Configs.enderRailEnabled) {
       BasicSoulBinderRecipe err = new BasicSoulBinderRecipe(new ItemStack(Blocks.detector_rail), new ItemStack(EnderIO.blockEnderRail),
-          Config.soulBinderEnderRailRF, Config.soulBinderEnderRailLevels, "EnderRail", "SpecialMobs.SpecialEnderman", "Enderman");
+          Configs.soulBinderEnderRailRF, Configs.soulBinderEnderRailLevels, "EnderRail", "SpecialMobs.SpecialEnderman", "Enderman");
       MachineRecipeRegistry.instance.registerRecipe(ModObject.blockSoulBinder.unlocalisedName, err);
     }
   }

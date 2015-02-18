@@ -26,7 +26,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import crazypants.enderio.EnderIO;
 import crazypants.enderio.EnderIOTab;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.gui.IAdvancedTooltipProvider;
 import crazypants.enderio.machine.power.PowerDisplayUtil;
 import crazypants.enderio.teleport.IItemOfTravel;
@@ -106,7 +106,7 @@ public class ItemDarkSteelPickaxe extends ItemPickaxe implements IEnergyContaine
   public boolean onBlockDestroyed(ItemStack item, World world, Block block, int x, int y, int z, EntityLivingBase entLiving) {
     if(block.getBlockHardness(world, x, y, z) != 0.0D) {
       if(useObsidianEffeciency(item, block)) {
-        extractEnergy(item, Config.darkSteelPickPowerUseObsidian, false);
+        extractEnergy(item, Configs.darkSteelPickPowerUseObsidian, false);
       }
       applyDamage(entLiving, item, 1);
     }
@@ -127,7 +127,7 @@ public class ItemDarkSteelPickaxe extends ItemPickaxe implements IEnergyContaine
     static boolean doRightClickItemPlace(EntityPlayer player, World world,
 	    int x, int y, int z, int side, float par8, float par9, float par10) {
 	int current = player.inventory.currentItem;
-	int slot = current == 0 && Config.slotZeroPlacesEight ? 8 : current + 1;
+	int slot = current == 0 && Configs.slotZeroPlacesEight ? 8 : current + 1;
 	if (slot < 9
 		&& player.inventory.mainInventory[slot] != null
 		&& !(player.inventory.mainInventory[slot].getItem() instanceof IDarkSteelItem)) {
@@ -155,7 +155,7 @@ public class ItemDarkSteelPickaxe extends ItemPickaxe implements IEnergyContaine
 
     EnergyUpgrade eu = EnergyUpgrade.loadFromItem(stack);
     if(eu != null && eu.isAbsorbDamageWithPower(stack) && eu.getEnergy() > 0) {
-      eu.extractEnergy(damage * Config.darkSteelPickPowerUsePerDamagePoint, false);
+      eu.extractEnergy(damage * Configs.darkSteelPickPowerUsePerDamagePoint, false);
 
     } else {
       damage = stack.getItemDamage() + damage;
@@ -186,12 +186,12 @@ public class ItemDarkSteelPickaxe extends ItemPickaxe implements IEnergyContaine
   @Override
   public float getDigSpeed(ItemStack stack, Block block, int meta) {
     if(useObsidianEffeciency(stack, block)) {
-      return ItemDarkSteelSword.MATERIAL.getEfficiencyOnProperMaterial() + Config.darkSteelPickEffeciencyBoostWhenPowered
-          + Config.darkSteelPickEffeciencyObsidian;
+      return ItemDarkSteelSword.MATERIAL.getEfficiencyOnProperMaterial() + Configs.darkSteelPickEffeciencyBoostWhenPowered
+          + Configs.darkSteelPickEffeciencyObsidian;
     }
     if(ForgeHooks.isToolEffective(stack, block, meta)) {
-      if(Config.darkSteelPickPowerUsePerDamagePoint <= 0 || getEnergyStored(stack) > 0) {
-        return ItemDarkSteelSword.MATERIAL.getEfficiencyOnProperMaterial() + Config.darkSteelPickEffeciencyBoostWhenPowered;
+      if(Configs.darkSteelPickPowerUsePerDamagePoint <= 0 || getEnergyStored(stack) > 0) {
+        return ItemDarkSteelSword.MATERIAL.getEfficiencyOnProperMaterial() + Configs.darkSteelPickEffeciencyBoostWhenPowered;
       }
       return ItemDarkSteelSword.MATERIAL.getEfficiencyOnProperMaterial();
     }
@@ -209,11 +209,11 @@ public class ItemDarkSteelPickaxe extends ItemPickaxe implements IEnergyContaine
   private boolean useObsidianEffeciency(ItemStack item, Block block) {
     boolean useObsidianSpeed = false;
     int energy = getEnergyStored(item);
-    if(energy > Config.darkSteelPickPowerUseObsidian) {
+    if(energy > Configs.darkSteelPickPowerUseObsidian) {
       useObsidianSpeed = block == Blocks.obsidian;
-      if(!useObsidianSpeed && Config.darkSteelPickApplyObsidianEffeciencyAtHardess > 0) {
+      if(!useObsidianSpeed && Configs.darkSteelPickApplyObsidianEffeciencyAtHardess > 0) {
         try {
-          useObsidianSpeed = (block != null && block.getBlockHardness(null, -1, -1, -1) >= Config.darkSteelPickApplyObsidianEffeciencyAtHardess);
+          useObsidianSpeed = (block != null && block.getBlockHardness(null, -1, -1, -1) >= Configs.darkSteelPickApplyObsidianEffeciencyAtHardess);
         } catch (Exception e) {
           //given we are passing in a null world to getBlockHardness it is possible this could cause an NPE, so just ignore it
         }
@@ -272,7 +272,7 @@ public class ItemDarkSteelPickaxe extends ItemPickaxe implements IEnergyContaine
 
   @Override
   public void addDetailedEntries(ItemStack itemstack, EntityPlayer entityplayer, List list, boolean flag) {
-    if(!Config.addDurabilityTootip) {
+    if(!Configs.addDurabilityTootip) {
       list.add(ItemUtil.getDurabilityString(itemstack));
     }
     String str = EnergyUpgrade.getStoredEnergyString(itemstack);
@@ -280,12 +280,12 @@ public class ItemDarkSteelPickaxe extends ItemPickaxe implements IEnergyContaine
       list.add(str);
     }
     if(EnergyUpgrade.itemHasAnyPowerUpgrade(itemstack)) {
-      list.add(EnumChatFormatting.WHITE + "+" + Config.darkSteelPickEffeciencyBoostWhenPowered + " "
+      list.add(EnumChatFormatting.WHITE + "+" + Configs.darkSteelPickEffeciencyBoostWhenPowered + " "
           + Lang.localize("item.darkSteel_pickaxe.tooltip.effPowered"));
-      list.add(EnumChatFormatting.WHITE + "+" + Config.darkSteelPickEffeciencyObsidian + " "
+      list.add(EnumChatFormatting.WHITE + "+" + Configs.darkSteelPickEffeciencyObsidian + " "
           + Lang.localize("item.darkSteel_pickaxe.tooltip.effObs") + " ");
       list.add(EnumChatFormatting.WHITE + "     " + "(" + Lang.localize("item.darkSteel_pickaxe.tooltip.cost") + " "
-          + PowerDisplayUtil.formatPower(Config.darkSteelPickPowerUseObsidian) + " "
+          + PowerDisplayUtil.formatPower(Configs.darkSteelPickPowerUseObsidian) + " "
           + PowerDisplayUtil.abrevation() + ")");
     }
     DarkSteelRecipeManager.instance.addAdvancedTooltipEntries(itemstack, entityplayer, list, flag);
@@ -323,7 +323,7 @@ public class ItemDarkSteelPickaxe extends ItemPickaxe implements IEnergyContaine
       if(ticksSinceBlink < 0) {
         lastBlickTick = -1;
       }
-      if(Config.travelStaffBlinkEnabled && world.isRemote && ticksSinceBlink >= Config.travelStaffBlinkPauseTicks) {
+      if(Configs.travelStaffBlinkEnabled && world.isRemote && ticksSinceBlink >= Configs.travelStaffBlinkPauseTicks) {
         if(TravelController.instance.doBlink(stack, player)) {
           player.swingItem();
           lastBlickTick = EnderIO.proxy.getTickCount();

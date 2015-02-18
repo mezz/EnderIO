@@ -3,7 +3,7 @@ package crazypants.enderio.item.darksteel;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import crazypants.enderio.EnderIO;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.material.Material;
 
 public class TravelUpgrade extends AbstractUpgrade {
@@ -31,7 +31,7 @@ public class TravelUpgrade extends AbstractUpgrade {
   }
 
   public TravelUpgrade() {
-    super(UPGRADE_NAME, "enderio.darksteel.upgrade.travel", new ItemStack(EnderIO.itemMaterial,1,Material.ENDER_CRYSTAL.ordinal()), Config.darkSteelTravelCost);
+    super(UPGRADE_NAME, "enderio.darksteel.upgrade.travel", new ItemStack(EnderIO.itemMaterial,1,Material.ENDER_CRYSTAL.ordinal()), Configs.darkSteelTravelCost);
   }  
   
   @Override

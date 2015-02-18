@@ -10,7 +10,7 @@ import crazypants.enderio.ModObject;
 import crazypants.enderio.conduit.AbstractItemConduit;
 import crazypants.enderio.conduit.IConduit;
 import crazypants.enderio.conduit.ItemConduitSubtype;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.gui.IAdvancedTooltipProvider;
 import crazypants.enderio.gui.TooltipAddera;
 import crazypants.util.Lang;
@@ -67,14 +67,14 @@ public class ItemLiquidConduit extends AbstractItemConduit implements IAdvancedT
     int maxIo;
 
     if(itemstack.getItemDamage() == 0) {
-      extractRate = Config.fluidConduitExtractRate;
-      maxIo = Config.fluidConduitMaxIoRate;
+      extractRate = Configs.fluidConduitExtractRate;
+      maxIo = Configs.fluidConduitMaxIoRate;
     } else if(itemstack.getItemDamage() == 1){
-      extractRate = Config.advancedFluidConduitExtractRate;
-      maxIo = Config.advancedFluidConduitMaxIoRate;
+      extractRate = Configs.advancedFluidConduitExtractRate;
+      maxIo = Configs.advancedFluidConduitMaxIoRate;
     } else {
-      extractRate = Config.enderFluidConduitExtractRate;
-      maxIo = Config.enderFluidConduitMaxIoRate;
+      extractRate = Configs.enderFluidConduitExtractRate;
+      maxIo = Configs.enderFluidConduitMaxIoRate;
     }
     String mbt = " " + Lang.localize("fluid.millibucketsTick");
     list.add(Lang.localize("itemLiquidConduit.tooltip.maxExtract") + " " + extractRate + mbt);

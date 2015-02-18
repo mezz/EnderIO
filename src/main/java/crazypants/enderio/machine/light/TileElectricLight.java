@@ -11,7 +11,7 @@ import net.minecraft.world.EnumSkyBlock;
 import net.minecraftforge.common.util.ForgeDirection;
 import crazypants.enderio.EnderIO;
 import crazypants.enderio.TileEntityEio;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.wireless.IWirelessCharger;
 import crazypants.enderio.machine.wireless.WirelessChargerController;
 import crazypants.enderio.power.BasicCapacitor;
@@ -182,7 +182,7 @@ public class TileElectricLight extends TileEntityEio implements IInternalPowerRe
       }
     }
 
-    if (charger != null && minDist < Config.wirelessChargerRange) {
+    if (charger != null && minDist < Configs.wirelessChargerRange) {
       TileEntity te = charger.getTileEntity(worldObj);
       if (te instanceof IWirelessCharger) {
         return (IWirelessCharger) te;

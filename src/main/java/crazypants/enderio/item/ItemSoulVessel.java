@@ -32,7 +32,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import crazypants.enderio.EnderIO;
 import crazypants.enderio.EnderIOTab;
 import crazypants.enderio.ModObject;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.gui.IResourceTooltipProvider;
 import crazypants.util.DyeColor;
 import crazypants.util.EntityUtil;
@@ -55,7 +55,7 @@ public class ItemSoulVessel extends Item implements IResourceTooltipProvider {
     setUnlocalizedName(ModObject.itemSoulVessel.unlocalisedName);
     setMaxStackSize(64);
     blackList = new ArrayList<String>();
-    for (String ent : Config.soulVesselBlackList) {
+    for (String ent : Configs.soulVesselBlackList) {
       blackList.add(ent);
     }
   }
@@ -187,7 +187,7 @@ public class ItemSoulVessel extends Item implements IResourceTooltipProvider {
       return false;
     }
     
-    if(!Config.soulVesselCapturesBosses && entity instanceof IBossDisplayData) {
+    if(!Configs.soulVesselCapturesBosses && entity instanceof IBossDisplayData) {
       return false;
     }
     

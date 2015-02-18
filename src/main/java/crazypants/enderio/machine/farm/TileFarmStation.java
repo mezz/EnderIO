@@ -19,7 +19,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 import crazypants.enderio.EnderIO;
 import crazypants.enderio.ModObject;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.AbstractPoweredTaskEntity;
 import crazypants.enderio.machine.ContinuousTask;
 import crazypants.enderio.machine.IMachineRecipe.ResultStack;
@@ -40,7 +40,7 @@ public class TileFarmStation extends AbstractPoweredTaskEntity {
   public enum ToolType {
     HOE { 
       boolean match(ItemStack item) {
-        for (ItemStack stack : Config.farmHoes) {
+        for (ItemStack stack : Configs.farmHoes) {
           if (stack.getItem() == item.getItem()) {
             return true;
           }
@@ -83,7 +83,7 @@ public class TileFarmStation extends AbstractPoweredTaskEntity {
   private BlockCoord lastScanned;
   private EntityPlayerMP farmerJoe;
 
-  private int farmSize = Config.farmDefaultSize;
+  private int farmSize = Configs.farmDefaultSize;
 
   private int minToolSlot = 0;
   private int maxToolSlot = 1;
@@ -113,9 +113,9 @@ public class TileFarmStation extends AbstractPoweredTaskEntity {
 
   public void actionPerformed(boolean isAxe) {
     if(isAxe) {
-      usePower(Config.farmAxeActionEnergyUseRF);
+      usePower(Configs.farmAxeActionEnergyUseRF);
     } else {
-      usePower(Config.farmActionEnergyUseRF);
+      usePower(Configs.farmActionEnergyUseRF);
     }
     clearNotification();
   }
@@ -202,7 +202,7 @@ public class TileFarmStation extends AbstractPoweredTaskEntity {
   public void damageTool(ToolType type, Block blk, BlockCoord bc, int damage) {
 
     float rand = worldObj.rand.nextFloat();
-    if(rand >= Config.farmToolTakeDamageChance) {
+    if(rand >= Configs.farmToolTakeDamageChance) {
       return;
     }
 
@@ -350,7 +350,7 @@ public class TileFarmStation extends AbstractPoweredTaskEntity {
       sendNotification();
     }       
     
-    if(!hasPower() && Config.farmActionEnergyUseRF > 0 && Config.farmAxeActionEnergyUseRF > 0) {
+    if(!hasPower() && Configs.farmActionEnergyUseRF > 0 && Configs.farmAxeActionEnergyUseRF > 0) {
       setNotification("noPower");
       return;
     }
@@ -386,7 +386,7 @@ public class TileFarmStation extends AbstractPoweredTaskEntity {
       return;
     }
     
-    if(!hasPower() && Config.farmActionEnergyUseRF > 0 && Config.farmAxeActionEnergyUseRF > 0) {
+    if(!hasPower() && Configs.farmActionEnergyUseRF > 0 && Configs.farmAxeActionEnergyUseRF > 0) {
       setNotification("noPower");
       return;
     }
@@ -620,7 +620,7 @@ public class TileFarmStation extends AbstractPoweredTaskEntity {
 
   @Override
   public int getPowerUsePerTick() {
-    return Math.round(Config.farmContinuousEnergyUseRF * (getFarmSize()/(float)Config.farmDefaultSize ));
+    return Math.round(Configs.farmContinuousEnergyUseRF * (getFarmSize()/(float)Configs.farmDefaultSize ));
   }
 
   @Override

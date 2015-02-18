@@ -13,7 +13,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.machine.transceiver.TileTransceiver;
 import crazypants.enderio.network.PacketHandler;
 
@@ -88,7 +88,7 @@ public class TeleportUtil {
   public static void spawnTeleportEffects(World world, Entity entity) {
     PacketHandler.INSTANCE.sendToAllAround(new PacketTeleportEffects(entity), new TargetPoint(world.provider.dimensionId, entity.posX, entity.posY,
         entity.posZ, 64));
-    if(Config.machineSoundsEnabled) {
+    if(Configs.machineSoundsEnabled) {
       world.playSoundEffect(entity.posX, entity.posY, entity.posZ, "mob.endermen.portal", 0.5F, 0.25F);
     }
   }  

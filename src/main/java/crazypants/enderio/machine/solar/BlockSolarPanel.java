@@ -19,7 +19,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import crazypants.enderio.BlockEio;
 import crazypants.enderio.ModObject;
 import crazypants.enderio.api.tool.ITool;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.gui.IResourceTooltipProvider;
 import crazypants.enderio.tool.ToolUtil;
 import crazypants.enderio.waila.IWailaInfoProvider;
@@ -48,7 +48,7 @@ public class BlockSolarPanel extends BlockEio implements IResourceTooltipProvide
 
   private BlockSolarPanel() {
     super(ModObject.blockSolarPanel.unlocalisedName, TileEntitySolarPanel.class);
-    if(!Config.photovoltaicCellEnabled) {
+    if(!Configs.photovoltaicCellEnabled) {
       setCreativeTab(null);
     }
     setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, BLOCK_HEIGHT, 1.0F);

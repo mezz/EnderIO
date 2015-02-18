@@ -23,7 +23,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import crazypants.enderio.EnderIO;
 import crazypants.enderio.EnderIOTab;
 import crazypants.enderio.ModObject;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.gui.IResourceTooltipProvider;
 import crazypants.enderio.machine.transceiver.Channel;
 import crazypants.enderio.machine.transceiver.ChannelType;
@@ -62,7 +62,7 @@ public class BlockEnderRail extends BlockRail implements IResourceTooltipProvide
     BlockEnderRail res = new BlockEnderRail();
     res.init();
 
-    if(Config.enderRailTeleportPlayers) {
+    if(Configs.enderRailTeleportPlayers) {
       FMLCommonHandler.instance().bus().register(PlayerTeleportHandler.instance);
     }
     return res;
@@ -76,7 +76,7 @@ public class BlockEnderRail extends BlockRail implements IResourceTooltipProvide
   protected BlockEnderRail() {
     setBlockName(ModObject.blockEnderRail.unlocalisedName);
     setStepSound(Block.soundTypeMetal);
-    if(Config.transceiverEnabled && Config.enderRailEnabled) {
+    if(Configs.transceiverEnabled && Configs.enderRailEnabled) {
       setCreativeTab(EnderIOTab.tabEnderIO);
     }
     setBlockTextureName("enderio:blockEnderRail");
@@ -258,11 +258,11 @@ public class BlockEnderRail extends BlockRail implements IResourceTooltipProvide
   private int getPowerRequiredForSingleCart(TileTransceiver sender, TileTransceiver reciever) {
     int powerRequired = 0;
     if(sender.getWorldObj().provider.dimensionId != reciever.getWorldObj().provider.dimensionId) {
-      powerRequired = Config.enderRailPowerRequireCrossDimensions;
+      powerRequired = Configs.enderRailPowerRequireCrossDimensions;
     } else {
-      powerRequired += sender.getLocation().distance(reciever.getLocation()) * Config.enderRailPowerRequiredPerBlock;
-      if(Config.enderRailCapSameDimensionPowerAtCrossDimensionCost) {
-        powerRequired = Math.min(powerRequired, Config.enderRailPowerRequireCrossDimensions);
+      powerRequired += sender.getLocation().distance(reciever.getLocation()) * Configs.enderRailPowerRequiredPerBlock;
+      if(Configs.enderRailCapSameDimensionPowerAtCrossDimensionCost) {
+        powerRequired = Math.min(powerRequired, Configs.enderRailPowerRequireCrossDimensions);
       }
     }
     return powerRequired;
@@ -285,7 +285,7 @@ public class BlockEnderRail extends BlockRail implements IResourceTooltipProvide
         if(entities != null) {
           toTeleport.add(entities);
           toDespawn.add(cartInTrain);
-          if(Config.enderRailTeleportPlayers && cartInTrain.riddenByEntity instanceof EntityPlayerMP) {
+          if(Configs.enderRailTeleportPlayers && cartInTrain.riddenByEntity instanceof EntityPlayerMP) {
             playerToTP = (EntityPlayerMP) cartInTrain.riddenByEntity;
             playerToMount = getCart(entities);
           }

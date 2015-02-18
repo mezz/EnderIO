@@ -11,7 +11,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import crazypants.enderio.EnderIO;
 import crazypants.enderio.EnderIOTab;
 import crazypants.enderio.ModObject;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 import crazypants.enderio.gui.IResourceTooltipProvider;
 
 public class BlockDarkSteelLadder extends BlockLadder implements IResourceTooltipProvider {
@@ -48,11 +48,11 @@ public class BlockDarkSteelLadder extends BlockLadder implements IResourceToolti
     }
     
     if(entity.motionY >= 0.1) {
-      entity.setPosition(entity.posX, entity.posY + Config.darkSteelLadderSpeedBoost, entity.posZ);
+      entity.setPosition(entity.posX, entity.posY + Configs.darkSteelLadderSpeedBoost, entity.posZ);
     } else if(entity.motionY <= -0.1) {
       Block blockUnder = entity.worldObj.getBlock(MathHelper.floor_double(entity.posX), MathHelper.floor_double(entity.posY) - 3, MathHelper.floor_double(entity.posZ));
       if (blockUnder == null || blockUnder == this) { // prevent clipping into block
-        entity.setPosition(entity.posX, entity.posY - Config.darkSteelLadderSpeedBoost, entity.posZ);
+        entity.setPosition(entity.posX, entity.posY - Configs.darkSteelLadderSpeedBoost, entity.posZ);
       }
     }
   }

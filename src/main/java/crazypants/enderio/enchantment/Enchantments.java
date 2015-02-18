@@ -2,7 +2,7 @@ package crazypants.enderio.enchantment;
 
 import net.minecraft.enchantment.Enchantment;
 import crazypants.enderio.Log;
-import crazypants.enderio.config.Config;
+import crazypants.enderio.config.Configs;
 
 public class Enchantments {
 
@@ -19,8 +19,8 @@ public class Enchantments {
   private EnchantmentSoulBound soulBound;
 
   private void registerEnchantments() {
-    if(Config.enchantmentSoulBoundEnabled) {
-      int id = Config.enchantmentSoulBoundId;
+    if(Configs.enchantmentSoulBoundEnabled) {
+      int id = Configs.enchantmentSoulBoundId;
       if(id < 0) {
         id = getEmptyEnchantId();
       }
